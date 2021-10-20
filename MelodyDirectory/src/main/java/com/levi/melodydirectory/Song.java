@@ -13,7 +13,7 @@ public class Song extends Generic<Song> {
 	private String album;
 	private String price;
 	private String songLength;
-	
+	 
 	public Song(String name, String description, String genre, String releaseDate, String eLink, String album, String price, String songLength) {
 		super(name, description, genre, releaseDate, eLink);
 		setDataType(1);
