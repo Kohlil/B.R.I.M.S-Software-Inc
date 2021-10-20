@@ -15,7 +15,7 @@ public abstract class Generic<T> {
 	private String eLink;
 	private String genre;
 	private int dataType;
-	
+	 
 	// Constructor
 	public Generic(String name, String description, String genre, String releaseDate, String eLink) {
 		// dataType will be tied to object constructor
