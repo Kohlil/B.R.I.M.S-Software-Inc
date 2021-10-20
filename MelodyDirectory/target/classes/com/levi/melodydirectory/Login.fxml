@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" spacing="5.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.LoginController">
+   <children>
+      <Label text="Melody Directory">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+      <Separator prefHeight="89.0" prefWidth="720.0" visible="false" />
+      <Label fx:id="loginErrorLabel" text="Please enter a valid username and password" textFill="#e14721" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Label text="Username">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTextField" onKeyPressed="#loginShortcut" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Label text="Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="passwordTextField" onKeyPressed="#loginShortcut" />
+         </children>
+      </HBox>
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="26.0" prefWidth="77.0" text="Login">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
