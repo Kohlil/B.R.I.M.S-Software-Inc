@@ -30,7 +30,7 @@ public class Album extends Generic<Album> {
 	public String toString() {
 		return super.toString() + "," + artist + "," + songs + "," + label + "," + price;
 	}
-	
+	 
 	public String tags() {
 		return super.tags();
 	}
