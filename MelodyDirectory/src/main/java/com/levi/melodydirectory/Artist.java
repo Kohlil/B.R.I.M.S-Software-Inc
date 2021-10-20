@@ -8,7 +8,7 @@ public class Artist extends Generic<Artist> {
 	 * toString()
 	 * tags() (Gets the genre)
 	 */
-	
+	 
 	private ArrayList<Album> albums = new ArrayList<Album>();
 	
 	public Artist(String name, String description, String genre, String releaseDate, String eLink, ArrayList<Album> albums) {
