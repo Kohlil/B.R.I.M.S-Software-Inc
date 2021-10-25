@@ -24,3 +24,13 @@ CREATE TABLE ObjectInfo(
 	info		VARCHAR(1024)		NOT NULL
 )
 GO
+
+INSERT Profiles(userId, pass) VALUES
+('Bricen', 'group17'),
+('Rylee', 'group17'),
+('Manas', 'group17'),
+('Shane', 'group17'),
+('Isaiah', 'group17')
+GO
+
+SELECT * FROM Profiles
