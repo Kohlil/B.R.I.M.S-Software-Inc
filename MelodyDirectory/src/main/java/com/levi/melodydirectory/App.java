@@ -1,18 +1,20 @@
 package com.levi.melodydirectory;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-
 /**
  * Author: Isaiah Kohl
  * Date: 10/15/21
  * Purpose: Start point for application
  */
+
+import java.io.File;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
+import javafx.scene.image.Image;
+
 public class App extends Application {
 
     private static Scene scene;
@@ -27,7 +29,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Homepage"), 720, 420); 
+        //Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A","SpiderMan Soundtrack", "$2.00", "2:00");
+        //scene = new Scene(new ElementView(SF, DataTypes.SONG));
         stage.setScene(scene);
+        
+        stage.setTitle("Melody Directory");
+        stage.getIcons().add(new Image(new File("com\\levi\\melodydirectory\\icon.png").toURI().toString()));
         stage.show();
     }
 

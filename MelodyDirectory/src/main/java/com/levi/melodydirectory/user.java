@@ -26,7 +26,8 @@ Delete account
 		return username;
 	}
 
-	// can username be changed? snapchat rules?
+	// can username be changed? snapchat rules? Also, should query db
+        // to make sure no duplicate user names are created
 	public void setUsername(String username) {
 		this.username = username;
 	}

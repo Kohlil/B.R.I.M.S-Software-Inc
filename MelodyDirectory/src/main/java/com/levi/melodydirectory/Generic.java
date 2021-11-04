@@ -1,5 +1,8 @@
+package com.levi.melodydirectory;
+
 public abstract class Generic<T> {
-	/*
+
+    /*
 	 * Generic Class Structure. Includes;
 	 * Name
 	 * Description
@@ -8,79 +11,103 @@ public abstract class Generic<T> {
 	 * DataType
 	 * toString()
 	 * tags()
-	 */
-	private String name;
-	private String description;
-	private String releaseDate;
-	private String eLink;
-	private String genre;
-	private int dataType;
-	 
-	// Constructor
-	public Generic(String name, String description, String genre, String releaseDate, String eLink) {
-		// dataType will be tied to object constructor
-		this.name = name;
-		this.description = description;
-		this.releaseDate = releaseDate;
-		this.eLink = eLink;
-		this.genre = genre;
-	}
-	
-	// dataType, name, description, genre, releaseDate, eLink
-	public String toString() {
-		return dataType + "," + name + "," + description + "," + genre + "," + releaseDate + "," + eLink;
-	}
-	
-	public String tags() {
-		return genre;
-	}
+     */
+    private String name;
+    private String description;
+    private String releaseDate;
+    private String eLink;
+    private String genre;
+    private int likes;
+    private int dislikes;
+    private DataTypes dataType;
 
-	public String getName() {
-		return name;
-	}
+    public static enum DataTypes {
+        SONG,
+        ARTIST,
+        ALBUM
+    };
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    // Constructor
+    public Generic(String name, String description, String genre, String releaseDate, String eLink, int likes, int dislikes) {
+        // dataType will be tied to object constructor
+        this.name = name;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.eLink = eLink;
+        this.genre = genre;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    // dataType, name, description, genre, releaseDate, eLink
+    public String toString() {
+        return dataType + "," + name + "," + description + "," + genre + "," + releaseDate + "," + eLink;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String tags() {
+        return genre;
+    }
 
-	public String getReleaseDate() {
-		return releaseDate;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String geteLink() {
-		return eLink;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void seteLink(String eLink) {
-		this.eLink = eLink;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
+    public String getReleaseDate() {
+        return releaseDate;
+    }
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
 
-	public int getDataType() {
-		return dataType;
-	}
+    public String geteLink() {
+        return eLink;
+    }
 
-	public void setDataType(int dataType) {
-		this.dataType = dataType;
-	}
-	
+    public void seteLink(String eLink) {
+        this.eLink = eLink;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public DataTypes getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(DataTypes dataType) {
+        this.dataType = dataType;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getDislikes() {
+        return dislikes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
 }

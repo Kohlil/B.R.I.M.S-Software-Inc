@@ -1,3 +1,4 @@
+package com.levi.melodydirectory;
 
 public class Song extends Generic<Song> {
 	/*
@@ -14,19 +15,21 @@ public class Song extends Generic<Song> {
 	private String price;
 	private String songLength;
 	 
-	public Song(String name, String description, String genre, String releaseDate, String eLink, String album, String price, String songLength) {
-		super(name, description, genre, releaseDate, eLink);
-		setDataType(1);
+	public Song(String name, String description, String genre, String releaseDate, String eLink, int likes, int dislikes, String album, String price, String songLength) {
+		super(name, description, genre, releaseDate, eLink, likes, dislikes);
+		setDataType(DataTypes.SONG);
 		this.price = price;
 		this.songLength = songLength;
 		this.album = album;
 	}
 	
 	// dataType, name, description, genre, releaseDate, eLink, album, price, songLength
+        @Override
 	public String toString() {
 		return super.toString() + "," + album + "," + price + "," + songLength;
 	}
 	
+        @Override
 	public String tags() {
 		return super.tags();
 	}
