@@ -24,7 +24,6 @@ public class ElementCellFactory implements Callback<ListView<Generic>, ListCell<
                     setGraphic(null);
                 } 
                 else if (gen != null) {
-                    System.out.println("Test");
                     setText(null);
                     setGraphic(new ElementView(gen, DataTypes.SONG)); 
                 } 

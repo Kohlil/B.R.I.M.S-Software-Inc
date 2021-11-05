@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="20.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" text="Melody Directory">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="topRightHBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="loginPage" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="15.0" prefWidth="52.0" text="Login" StackPane.alignment="CENTER_RIGHT" />
+                        <Button fx:id="logoutButton" disable="true" mnemonicParsing="false" onAction="#logoutButtonPressed" text="Logout" visible="false" StackPane.alignment="CENTER_RIGHT" />
+                     </children>
+                  </StackPane>
+                  <TextField fx:id="searchBar" onKeyTyped="#keyTyped" text="Search">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefWidth="711.0" spacing="10.0">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" text="Sunflower">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="BOTTOM_LEFT" text="Post Malone">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="6.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </padding>
+            </Separator>
+            <HBox maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0">
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <Label text="Genre:" />
+                              <Label text="Pop" />
+                           </children>
+                        </HBox>
+                        <HBox prefWidth="144.0" spacing="5.0">
+                           <children>
+                              <Label text="Released:" />
+                              <Label text="XX/XX/XXXX" HBox.hgrow="SOMETIMES" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <Label text="Album:" />
+                              <Label text="Spiderman-Into The Spiderverse" />
+                           </children>
+                        </HBox>
+                        <HBox prefWidth="144.0" spacing="5.0">
+                           <children>
+                              <Label text="Length:" />
+                              <Label text="3:04" HBox.hgrow="SOMETIMES" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <TextField alignment="TOP_LEFT" editable="false" maxHeight="-Infinity" prefHeight="139.0" prefWidth="711.0" style="-fx-background-color: transparent;" text="This is a description.  You can tell it's a description because of the way that it is." VBox.vgrow="ALWAYS" />
+            <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="711.0" spacing="5.0">
+               <children>
+                  <Hyperlink text="Third Party Link" underline="true" />
+                  <Label contentDisplay="CENTER" text="Price:" />
+                  <Label text="\$2.99" />
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Separator>
+            <Label text="Also see">
+               <VBox.margin>
+                  <Insets left="1.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ListView fx:id="recentlyAddedSlider" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="711.0" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

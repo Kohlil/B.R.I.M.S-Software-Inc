@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root type="StackPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <javafx.scene.layout.VBox id="ElementView" fx:id="elementView" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-radius: 10 10 10 10;" styleClass="ElementView">
+         <children>
+            <Label fx:id="name" alignment="CENTER" text="Pyscho">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Genre:" />
+                  <Label fx:id="genre" text="Hip-Hop" />
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="37.0" spacing="5.0">
+               <children>
+                  <Label text="Released:" />
+                  <Label fx:id="released" text="23/02/21" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="65.0" prefWidth="126.0" spacing="5.0">
+               <children>
+                  <Label text="Rating:" />
+                  <Label fx:id="rating" text="97%" />
+               </children>
+            </HBox>
+         </children>
+      </javafx.scene.layout.VBox>
+      <Button mnemonicParsing="false" onAction="#mouseClicked" opacity="0.0" prefHeight="125.0" prefWidth="125.0" />
+   </children>
+</fx:root>
