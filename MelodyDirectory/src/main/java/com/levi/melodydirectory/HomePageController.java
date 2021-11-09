@@ -2,45 +2,46 @@ package com.levi.melodydirectory;
 
 /**
  * Author: Isaiah Kohl Date: 10/19/21 Purpose: Allows the GUI to trigger events
- * in the code. Connects home page to back-end of the code and loads LoginPage
+ * in the code. Connects home page to back-end of the code
  */
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.VBox;
 
 public class HomePageController implements Initializable {
-
-    @FXML // fx:id="loginPage"
-    private Button loginButton;
-
-    @FXML // fx:id="searchBar"
-    private TextField searchBar;
+    
+    @FXML
+    private VBox rootVBox = new VBox();
 
     @FXML // fx:id="topRatedSlider"
     private ListView<Generic> topRatedSlider = new ListView<>();
 
     @FXML // fx:id="recentlyAddedSlider"
-    private ListView<Generic> recentlyAddedSlider;
+    private ListView<Generic> recentlyAddedSlider = new ListView<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //add header bar to VBox
+        rootVBox.getChildren().add(0, new HeaderBar(false));
+        
         ObservableList<Generic> topRatedElementsObs = FXCollections.observableArrayList();
         ObservableList<Generic> recentlyAddedElementsObs = FXCollections.observableArrayList();
 
         //Element for testing only
-        topRatedElementsObs.add(new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", 7, 0, "SpiderMan Soundtrack", "$2.00", "2:00"));
-        recentlyAddedElementsObs.add(new Artist("Post Malone", "The literal best", "Hip-Hop", "N/A", "N/A", 7, 0, new ArrayList<>()));
+        Song testSong = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "https://open.spotify.com/track/3KkXRkHbMCARz0aVfEt68P?si=c00edd0981d14652", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+        topRatedElementsObs.add(testSong);
+        recentlyAddedElementsObs.add(new Artist("Post Malone", "The literal best", "Hip-Hop", "N/A", "N/A", new ArrayList<>()));
+        
+        ArrayList<Song> songs = new ArrayList<>();
+        songs.add(testSong);
+        recentlyAddedElementsObs.add(new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "https://open.spotify.com/album/35s58BRTGAEWztPo9WqCIs?si=8iHCAbVATSGRFvtr8CJNRw", "Various Artists", songs, "Marvel Studios", "$2.00"));
 
         // TO-DO Query DB for top Rated and recently added results, then
         
@@ -53,42 +54,5 @@ public class HomePageController implements Initializable {
         recentlyAddedSlider.setCellFactory(new ElementCellFactory());
         recentlyAddedSlider.setEditable(false);
         recentlyAddedSlider.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    }
-
-    /**
-     *
-     * @param event
-     * @throws IOException
-     *
-     * Switches HomePage to LoginPage
-     */
-    @FXML
-    void loginButtonPressed(ActionEvent event) throws IOException {
-        App.setRoot("Login");
-    }
-
-    /**
-     *
-     * @param event
-     * @throws IOException
-     *
-     * Switches view to Logged out
-     */
-    @FXML
-    void logoutButtonPressed(ActionEvent event) throws IOException {
-        App.setRoot("Homepage");
-        // TODO add code to logout user in back-end
-    }
-
-    /**
-     *
-     * @param event
-     *
-     * Used to know when user is typing in the search bar, maybe have this send
-     * a request to the database to constantly update possible results?
-     */
-    @FXML
-    void keyTyped(KeyEvent event) {
-
     }
 }

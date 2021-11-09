@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -63,11 +62,17 @@ public class ElementView extends StackPane implements Initializable {
         genre.setText(gen.getGenre());
         released.setText(gen.getReleaseDate());
         rating.setText(gen.getName());
-        System.out.println(name.getText());
     }
     
     @FXML
     void mouseClicked(ActionEvent event) {
-        //Load ElementViewPage here
+        try {
+            //Load ElementViewPage here
+            App.setData(gen);
+            App.setRoot("View");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        }
     }
 }
