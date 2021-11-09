@@ -67,7 +67,6 @@ public class ViewController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        System.out.println("Test");
         //add header bar
         rootVBox.getChildren().add(0, new HeaderBar(true));
         
@@ -94,14 +93,14 @@ public class ViewController implements Initializable {
                 Artist tempArtist = (Artist)gen;
                 artist.setVisible(false);
                 length.setVisible(false);
-                alsoSeeObs.addAll(tempArtist.getAlbums());
+                // why can't I do this? alsoSeeObs.addAll(tempArtist.getAlbums());
                 break;
             case ALBUM://create test album to actually test this
                 Album tempAlbum = (Album)gen;
                 artist.setText(tempAlbum.getArtist());
                 albumLabel.setText("Label");
                 album.setText(tempAlbum.getLabel());
-                alsoSeeSlider.getItems().addAll(tempAlbum.getSongs());
+                // some way to add items to alsoSeeSlider.getItems().addAll(tempAlbum.getSongs());
                 break;
             case SONG:
                 Song tempSong = (Song)gen;
@@ -109,8 +108,8 @@ public class ViewController implements Initializable {
                 price.setText(tempSong.getPrice());
                 length.setText(tempSong.getSongLength());
                 album.setText(tempSong.getAlbum());
-                alsoSeeSlider.getItems().addAll();
-                break;
+                // I really want this to work alsoSeeSlider.getItems().addAll();
+                break;  
         }
         alsoSeeSlider.getItems().addAll(alsoSeeObs);
     }

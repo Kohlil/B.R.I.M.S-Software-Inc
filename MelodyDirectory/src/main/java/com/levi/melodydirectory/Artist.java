@@ -11,9 +11,9 @@ public class Artist extends Generic<Artist> {
 	 * tags() (Gets the genre)
 	 */
 	
-	private ArrayList<Album> albums;
+	private ArrayList<String> albums;
 	
-	public Artist(String name, String description, String genre, String releaseDate, String eLink, ArrayList<Album> albums) {
+	public Artist(String name, String description, String genre, String releaseDate, String eLink, ArrayList<String> albums) {
 		super(name, description, genre, releaseDate, eLink);
 		setDataType(DataTypes.ARTIST);
 		this.albums = albums;
@@ -30,11 +30,11 @@ public class Artist extends Generic<Artist> {
 		return super.tags();
 	}
 
-	public ArrayList<Album> getAlbums() {
+	public ArrayList<String> getAlbums() {
 		return albums;
 	}
 
-	public void setAlbums(ArrayList<Album> albums) {
+	public void setAlbums(ArrayList<String> albums) {
 		this.albums = albums;
 	}
 	

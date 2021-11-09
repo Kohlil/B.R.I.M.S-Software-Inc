@@ -18,9 +18,9 @@ public class Album extends Generic<Album> {
     private String artist;
     private String label;
     private String price;
-    private ArrayList<Song> songs = new ArrayList<Song>();
+    private ArrayList<String> songs = new ArrayList<String>();
 
-    public Album(String name, String description, String genre, String releaseDate, String eLink, String artist, ArrayList<Song> songs, String label, String price) {
+    public Album(String name, String description, String genre, String releaseDate, String eLink, String artist, ArrayList<String> songs, String label, String price) {
         super(name, description, genre, releaseDate, eLink);
         setDataType(DataTypes.ALBUM);
         this.artist = artist;
@@ -53,11 +53,11 @@ public class Album extends Generic<Album> {
         this.price = price;
     }
 
-    public ArrayList<Song> getSongs() {
+    public ArrayList<String> getSongs() {
         return songs;
     }
 
-    public void setSongs(ArrayList<Song> songs) {
+    public void setSongs(ArrayList<String> songs) {
         this.songs = songs;
     }
 
