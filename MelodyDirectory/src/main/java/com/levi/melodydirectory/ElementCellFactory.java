@@ -19,15 +19,15 @@ public class ElementCellFactory implements Callback<ListView<Generic>, ListCell<
             @Override
             public void updateItem(Generic gen, boolean empty) {
                 super.updateItem(gen, empty);
-                if (empty) {
+                if (empty) {//don't populate list
                     setText(null);
                     setGraphic(null);
                 } 
-                else if (gen != null) {
+                else if (gen != null) {//populate list with ElementViews
                     setText(null);
                     setGraphic(new ElementView(gen, DataTypes.SONG)); 
                 } 
-                else {
+                else {//populate list with empty cells
                     setText("null");
                     setGraphic(null);
                 }

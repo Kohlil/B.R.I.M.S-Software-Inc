@@ -62,13 +62,13 @@ public class ElementView extends StackPane implements Initializable {
         genre.setText(gen.getGenre());
         released.setText(gen.getReleaseDate());
         rating.setText(gen.getName());
-        System.out.println(name.getText());
     }
     
     @FXML
     void mouseClicked(ActionEvent event) {
         try {
             //Load ElementViewPage here
+            App.setData(gen);
             App.setRoot("View");
         } catch (IOException ex) {
             ex.printStackTrace();

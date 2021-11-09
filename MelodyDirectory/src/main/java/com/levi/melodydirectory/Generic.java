@@ -17,8 +17,6 @@ public abstract class Generic<T> {
     private String releaseDate;
     private String eLink;
     private String genre;
-    private int likes;
-    private int dislikes;
     private DataTypes dataType;
 
     public static enum DataTypes {
@@ -28,7 +26,7 @@ public abstract class Generic<T> {
     };
 
     // Constructor
-    public Generic(String name, String description, String genre, String releaseDate, String eLink, int likes, int dislikes) {
+    public Generic(String name, String description, String genre, String releaseDate, String eLink) {
         // dataType will be tied to object constructor
         this.name = name;
         this.description = description;
@@ -92,22 +90,6 @@ public abstract class Generic<T> {
 
     public void setDataType(DataTypes dataType) {
         this.dataType = dataType;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
-    public int getDislikes() {
-        return dislikes;
-    }
-
-    public void setDislikes(int dislikes) {
-        this.dislikes = dislikes;
     }
 
 }

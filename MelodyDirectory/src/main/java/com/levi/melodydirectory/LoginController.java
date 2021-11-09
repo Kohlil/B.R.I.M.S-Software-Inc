@@ -44,7 +44,8 @@ public class LoginController {
             System.out.println("Username: " + usernameTextField.getText());//TEMP
             System.out.println("Password: " + passwordTextField.getText());//TEMP
             if (true) { //method in user profile class login() to validate credentials and login user on back-end
-                App.setRoot("HomepageLoggedIn");
+                App.STATUS = HeaderBar.Status.LOGGED_IN;
+                App.setRoot("Homepage");
                 
             }
         }
