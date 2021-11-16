@@ -1,3 +1,4 @@
+package com.levi.melodydirectory;
 
 public class Song extends Generic<Song> {
 	/*
@@ -26,10 +27,6 @@ public class Song extends Generic<Song> {
 	// dataType, name, description, genre, releaseDate, eLink, album, price, songLength
 	public String toString() {
 		return super.toString() + "," + artist + "," + album + "," + price + "," + songLength;
-	}
-	
-	public String tags() {
-		return super.tags();
 	}
 
 	public String getAlbum() {
