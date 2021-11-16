@@ -10,8 +10,8 @@ public class Artist extends Generic<Artist> {
 	
 	private ArrayList<Album> albums = new ArrayList<Album>();
 	
-	public Artist(String name, String description, String genre, String releaseDate, String eLink, ArrayList<Album> albums) {
-		super(name, description, genre, releaseDate, eLink);
+	public Artist(String name, String description, String genre, String eLink, ArrayList<Album> albums) {
+		super(name, description, genre, "N/A", eLink);
 		setDataType(DataTypes.ARTIST);
 		this.albums = albums;
 	}
