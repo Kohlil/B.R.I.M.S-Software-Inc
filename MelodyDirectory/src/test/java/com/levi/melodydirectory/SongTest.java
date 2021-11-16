@@ -18,13 +18,6 @@ class SongTest {
 	}
 
 	@Test
-	void testTags() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
-		assertEquals("Pop", SF.tags());
-		assertEquals("Pop2".equals(SF.tags()), false);
-	}
-
-	@Test
 	void testSong() {
 		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals(SF.getName(), "Sunflower");

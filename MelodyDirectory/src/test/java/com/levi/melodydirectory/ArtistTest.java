@@ -19,20 +19,6 @@ class ArtistTest {
 	}
 
 	@Test
-	void testTags() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
-		ArrayList<Song> songs = new ArrayList<Song>();
-		songs.add(SF);
-		Album spiderMan = new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "N/A", "Various Artists", songs, "Marvel Studios", "$2.00");
-		ArrayList<Album> albums = new ArrayList<Album>();
-		albums.add(spiderMan);
-		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "10/18/18", "Marvel.com", albums);
-		assertEquals("Pop", marvel.tags());
-		assertFalse("Pop2".equals(marvel.tags()));
-		assertFalse("".equals(marvel.tags()));
-	}
-
-	@Test
 	void testArtist() {
 		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		ArrayList<Song> songs = new ArrayList<Song>();
