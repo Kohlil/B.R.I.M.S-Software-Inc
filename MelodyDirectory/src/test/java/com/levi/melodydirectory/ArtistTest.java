@@ -13,7 +13,7 @@ class ArtistTest {
 		Album spiderMan = new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "N/A", "Various Artists", songs, "Marvel Studios", "$2.00");
 		ArrayList<Album> albums = new ArrayList<Album>();
 		albums.add(spiderMan);
-		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "10/18/18", "Marvel.com", albums);
+		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "Marvel.com", albums);
 		assertEquals("3,Marvel,Soundtrack for SpiderMan ITSV,Pop,10/18/18,Marvel.com,[2,SpiderMan Into the SpiderVerse,Movie Soundtrack,10/18/18,N/A,Pop,Various Artists,[1,Sunflower,From SpiderMan, Into The Spiderverse,Pop,10/18/18,N/A,SpiderMan Soundtrack,$2.00,2:00],Marvel Studios,$2.00]" , marvel.toString());
 		assertEquals("Wrong".equals(marvel.toString()), false);
 	}
@@ -26,7 +26,7 @@ class ArtistTest {
 		Album spiderMan = new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "N/A", "Various Artists", songs, "Marvel Studios", "$2.00");
 		ArrayList<Album> albums = new ArrayList<Album>();
 		albums.add(spiderMan);
-		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "10/18/18", "Marvel.com", albums);
+		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "Marvel.com", albums);
 		assertEquals("Marvel", marvel.getName());
 		assertEquals("Soundtrack for SpiderMan ITSV", marvel.getDescription());
 		assertEquals("Pop", marvel.getGenre());
@@ -47,7 +47,7 @@ class ArtistTest {
 		ArrayList<Album> albums = new ArrayList<Album>();
 		ArrayList<Album> albums2 = new ArrayList<Album>();
 		albums.add(spiderMan);
-		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "10/18/18", "Marvel.com", albums);
+		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "Marvel.com", albums);
 		assertEquals(albums, marvel.getAlbums());
 		marvel.setAlbums(albums2);
 		assertEquals(albums2, marvel.getAlbums());
@@ -65,7 +65,7 @@ class ArtistTest {
 		ArrayList<Album> albums = new ArrayList<Album>();
 		ArrayList<Album> albums2 = new ArrayList<Album>();
 		albums.add(spiderMan);
-		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "10/18/18", "Marvel.com", albums);
+		Artist marvel = new Artist("Marvel", "Soundtrack for SpiderMan ITSV", "Pop", "Marvel.com", albums);
 		assertEquals(albums, marvel.getAlbums());
 		marvel.setAlbums(albums2);
 		assertEquals(albums2, marvel.getAlbums());
