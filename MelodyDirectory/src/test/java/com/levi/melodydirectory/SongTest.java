@@ -1,13 +1,12 @@
-package com.levi.melodydirectory;
-
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 class SongTest {
 
 	@Test
 	void testToString() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		String wrong = "2,Sunflower,From SpiderMan, Into The Spiderverse,Pop,10/18/18,N/A,SpiderMan Soundtrack,$2.00,2:00";
 		String wrong2 = "";
 		String correct = "1,Sunflower,From SpiderMan, Into The Spiderverse,Pop,10/18/18,N/A,SpiderMan Soundtrack,$2.00,2:00";
@@ -19,14 +18,14 @@ class SongTest {
 
 	@Test
 	void testTags() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals("Pop", SF.tags());
 		assertEquals("Pop2".equals(SF.tags()), false);
 	}
 
 	@Test
 	void testSong() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals(SF.getName(), "Sunflower");
 		assertEquals(SF.getDescription(), "From SpiderMan, Into The Spiderverse");
 		assertEquals(SF.getGenre(), "Pop");
@@ -39,7 +38,7 @@ class SongTest {
 
 	@Test
 	void testGetAlbum() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals("SpiderMan Soundtrack", SF.getAlbum());
 		SF.setAlbum("SpiderMan ITSV");
 		assertEquals("SpiderMan ITSV", SF.getAlbum());
@@ -48,7 +47,7 @@ class SongTest {
 
 	@Test
 	void testSetAlbum() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals("SpiderMan Soundtrack", SF.getAlbum());
 		SF.setAlbum("SpiderMan ITSV");
 		assertEquals("SpiderMan ITSV", SF.getAlbum());
@@ -57,7 +56,7 @@ class SongTest {
 
 	@Test
 	void testGetPrice() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals(SF.getPrice(), "$2.00");
 		assertEquals(SF.getPrice().equals("$2.00"), true);
 		assertEquals(SF.getPrice().equals("$3.00"), false);
@@ -67,7 +66,7 @@ class SongTest {
 
 	@Test
 	void testSetPrice() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals(SF.getPrice(), "$2.00");
 		assertEquals(SF.getPrice().equals("$2.00"), true);
 		assertEquals(SF.getPrice().equals("$3.00"), false);
@@ -77,7 +76,7 @@ class SongTest {
 
 	@Test
 	void testGetSongLength() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals(SF.getSongLength(), "2:00");
 		assertEquals(SF.getSongLength().equals("2:00"), true);
 		assertEquals(SF.getSongLength().equals("3:00"), false);
@@ -87,7 +86,7 @@ class SongTest {
 
 	@Test
 	void testSetSongLength() {
-		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
+		Song SF = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "N/A", "Marvel Studios", "SpiderMan Soundtrack", "$2.00", "2:00");
 		assertEquals(SF.getSongLength(), "2:00");
 		assertEquals(SF.getSongLength().equals("2:00"), true);
 		assertEquals(SF.getSongLength().equals("3:00"), false);
