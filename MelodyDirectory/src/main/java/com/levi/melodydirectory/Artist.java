@@ -1,3 +1,5 @@
+package com.levi.melodydirectory;
+
 import java.util.ArrayList;
 
 public class Artist extends Generic<Artist> {
@@ -8,9 +10,9 @@ public class Artist extends Generic<Artist> {
 	 * toString()
 	 */
 	
-	private ArrayList<Album> albums = new ArrayList<Album>();
+	private ArrayList<String> albums = new ArrayList<String>();
 	
-	public Artist(String name, String description, String genre, String eLink, ArrayList<Album> albums) {
+	public Artist(String name, String description, String genre, String eLink, ArrayList<String> albums) {
 		super(name, description, genre, "N/A", eLink);
 		setDataType(DataTypes.ARTIST);
 		this.albums = albums;
@@ -21,11 +23,11 @@ public class Artist extends Generic<Artist> {
 		return super.toString() + "," + albums;
 	}
 
-	public ArrayList<Album> getAlbums() {
+	public ArrayList<String> getAlbums() {
 		return albums;
 	}
 
-	public void setAlbums(ArrayList<Album> albums) {
+	public void setAlbums(ArrayList<String> albums) {
 		this.albums = albums;
 	}
 	
