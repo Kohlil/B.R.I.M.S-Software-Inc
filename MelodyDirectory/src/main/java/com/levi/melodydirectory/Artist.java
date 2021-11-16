@@ -6,7 +6,6 @@ public class Artist extends Generic<Artist> {
 	 * (Everything in the Generic) with;
 	 * ArrayList of albums
 	 * toString()
-	 * tags() (Gets the genre)
 	 */
 	
 	private ArrayList<Album> albums = new ArrayList<Album>();

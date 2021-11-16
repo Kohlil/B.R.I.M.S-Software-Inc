@@ -7,15 +7,14 @@ public class Song extends Generic<Song> {
 	 * Price
 	 * Song Length
 	 * toString()
-	 * tags()
 	 */
 	
 	private String album;
 	private String price;
 	private String songLength;
-	private String artistName;
+	private String artist;
 	
-	public Song(String name, String description, String genre, String releaseDate, String eLink,, String album, String price, String songLength, String artist) {
+	public Song(String name, String description, String genre, String releaseDate, String eLink, String album, String price, String songLength, String artist) {
 		super(name, description, genre, releaseDate, eLink);
 		setDataType(DataTypes.SONG);  
 		this.artist = artist;
@@ -26,7 +25,7 @@ public class Song extends Generic<Song> {
 	
 	// dataType, name, description, genre, releaseDate, eLink, album, price, songLength
 	public String toString() {
-		return super.toString() + "," + artistName + "," + album + "," + price + "," + songLength;
+		return super.toString() + "," + artist + "," + album + "," + price + "," + songLength;
 	}
 	
 	public String tags() {
@@ -37,12 +36,12 @@ public class Song extends Generic<Song> {
 		return album;
 	}
 
-	public String getArtistName() {
-		return artistName;
+	public String getArtist() {
+		return artist;
 	}
 
-	public void setArtistName(String artistName) {
-		this.artistName = artistName;
+	public void setArtist(String artistName) {
+		this.artist = artistName;
 	}
 
 	public void setAlbum(String album) {
