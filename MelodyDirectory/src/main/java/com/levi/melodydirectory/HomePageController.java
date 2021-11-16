@@ -37,7 +37,7 @@ public class HomePageController implements Initializable {
         //Element for testing only
         Song testSong = new Song("Sunflower", "From SpiderMan, Into The Spiderverse", "Pop", "10/18/18", "https://open.spotify.com/track/3KkXRkHbMCARz0aVfEt68P?si=c00edd0981d14652", "SpiderMan Soundtrack", "$2.00", "2:00", "Post Malone");
         topRatedElementsObs.add(testSong);
-        recentlyAddedElementsObs.add(new Artist("Post Malone", "The literal best", "Hip-Hop", "N/A", "N/A", new ArrayList<>()));
+        recentlyAddedElementsObs.add(new Artist("Post Malone", "The literal best", "Hip-Hop", "https://open.spotify.com/artist/246dkjvS1zLTtiykXe5h60?si=ouQAFxUQTIiG490PQAzKcw", new ArrayList<>()));
         
         ArrayList<String> songs = new ArrayList<>();
         songs.add("Sunflower");

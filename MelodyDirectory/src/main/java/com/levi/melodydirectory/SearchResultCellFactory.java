@@ -1,7 +1,7 @@
 /**
  * Author: Isaiah Kohl
- * Date: 11/2/21
- * Purpose: Creates GUI components for Sliders
+ * Date: 11/12/21
+ * Purpose: Creates GUI components for search results
  */
 
 package com.levi.melodydirectory;
@@ -11,7 +11,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
-public class ElementCellFactory implements Callback<ListView<Generic>, ListCell<Generic>> {
+public class SearchResultCellFactory implements Callback<ListView<Generic>, ListCell<Generic>> {
 
     @Override
     public ListCell<Generic> call(ListView<Generic> param) {
@@ -23,9 +23,9 @@ public class ElementCellFactory implements Callback<ListView<Generic>, ListCell<
                     setText(null);
                     setGraphic(null);
                 } 
-                else if (gen != null) {//populate list with ElementViews
+                else if (gen != null) {//populate list with SearchResultViews
                     setText(null);
-                    setGraphic(new ElementView(gen, DataTypes.SONG)); 
+                    setGraphic(new SearchResultView(gen, DataTypes.SONG)); 
                 } 
                 else {//populate list with empty cells
                     setText("null");

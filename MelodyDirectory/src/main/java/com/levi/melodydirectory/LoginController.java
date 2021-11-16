@@ -68,5 +68,15 @@ public class LoginController {
             buttonPressed(new ActionEvent());
         }
     }
+    
+    @FXML
+    void newUserPressed(ActionEvent event) throws IOException {
+        //App.setRoot("CreateAccount");
+    }
+    
+    @FXML
+    void homePressed(ActionEvent event) throws IOException {
+        App.setRoot("Homepage");
+    }
 
 }

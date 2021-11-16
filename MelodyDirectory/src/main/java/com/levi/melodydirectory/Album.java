@@ -12,7 +12,6 @@ public class Album extends Generic<Album> {
 	 * Price
 	 * ArrayList of songs
 	 * toString()
-	 * tags()
      */
 
     private String artist;
@@ -66,10 +65,4 @@ public class Album extends Generic<Album> {
     public String toString() {
         return super.toString() + "," + artist + "," + songs + "," + label + "," + price;
     }
-
-    @Override
-    public String tags() {
-        return super.tags();
-    }
-
 }

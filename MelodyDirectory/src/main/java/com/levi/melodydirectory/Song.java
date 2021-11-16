@@ -12,8 +12,6 @@ public class Song extends Generic<Song> {
 	 * tags()
      */
 
-    //Should artist and album be strings or actual objects? Issue with objects is
-    //it could lead to creating all songs/albums of a single artist with just one song
     private String artist;
     private String album;
     private String price;
@@ -32,11 +30,6 @@ public class Song extends Generic<Song> {
     @Override
     public String toString() {
         return super.toString() + "," + album + "," + price + "," + songLength;
-    }
-
-    @Override
-    public String tags() {
-        return super.tags();
     }
 
     public String getAlbum() {

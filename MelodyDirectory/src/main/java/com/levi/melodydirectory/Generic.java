@@ -40,10 +40,6 @@ public abstract class Generic<T> {
         return dataType + "," + name + "," + description + "," + genre + "," + releaseDate + "," + eLink;
     }
 
-    public String tags() {
-        return genre;
-    }
-
     public String getName() {
         return name;
     }

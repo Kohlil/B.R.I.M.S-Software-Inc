@@ -63,8 +63,23 @@ public class ViewController implements Initializable {
     @FXML
     private Label albumLabel = new Label();
     
+    @FXML
+    private Label releasedLabel = new Label();
+    
+     @FXML
+    private Label lengthLabel = new Label();
+    
     private URL url;
-
+    
+    
+    /**
+     * 
+     * @param arg0
+     * @param arg1 
+     * 
+     * Sets all fields depending on what type of element is being displayed and
+     * fills also see slider with close matches and similarities
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         //add header bar
@@ -77,41 +92,52 @@ public class ViewController implements Initializable {
         alsoSeeSlider.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         
         //set all fields
-        Generic gen = App.getData();
+        Generic gen = (Generic)App.getData();
         name.setText(gen.getName());
         genre.setText(gen.getGenre());
         descriptionTextArea.setText(gen.getDescription());
         released.setText(gen.getReleaseDate());
         try {
-            url = new URL(gen.geteLink());
+            url = new URL(gen.geteLink());//attempt to create a link
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
-            link.setText("INVALID LINK");
+            link.setText("INVALID LINK");//link is not valid
         }
         switch (gen.getDataType()) {
-            case ARTIST:
+            case ARTIST://set all fields to make sense for an artist
                 Artist tempArtist = (Artist)gen;
                 artist.setVisible(false);
                 length.setVisible(false);
-                // why can't I do this? alsoSeeObs.addAll(tempArtist.getAlbums());
+                price.setVisible(false);
+                lengthLabel.setVisible(false);
+                releasedLabel.setVisible(false);
+                released.setVisible(false);
+                album.setVisible(false);
+                albumLabel.setVisible(false);
+                // waiting on a way to add items to alsoSeeSlider.getItems().addAll(tempArtist.getAlbums());
+                //this will allow for the display of albums an artist has
                 break;
-            case ALBUM://create test album to actually test this
+            case ALBUM://set all fields to make sense for an album
                 Album tempAlbum = (Album)gen;
                 artist.setText(tempAlbum.getArtist());
-                albumLabel.setText("Label");
+                albumLabel.setText("Label:");
                 album.setText(tempAlbum.getLabel());
-                // some way to add items to alsoSeeSlider.getItems().addAll(tempAlbum.getSongs());
+                price.setText(tempAlbum.getPrice());
+                lengthLabel.setVisible(false);
+                length.setVisible(false);
+                // waiting on a way to add items to alsoSeeSlider.getItems().addAll(tempAlbum.getSongs());
+                //this will allow for the display of songs in albums
                 break;
-            case SONG:
+            case SONG://set all fields to make sense for a song
                 Song tempSong = (Song)gen;
                 artist.setText(tempSong.getArtist());
                 price.setText(tempSong.getPrice());
                 length.setText(tempSong.getSongLength());
                 album.setText(tempSong.getAlbum());
-                // I really want this to work alsoSeeSlider.getItems().addAll();
+                // waiting for DB access to allow for alsoSeeSlider.getItems().addAll();
                 break;  
         }
-        alsoSeeSlider.getItems().addAll(alsoSeeObs);
+        alsoSeeSlider.getItems().addAll(alsoSeeObs);//add all items to visible slider
     }
     
     @FXML

@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 /**
@@ -33,15 +35,15 @@ public class HeaderBar extends HBox {
     private Button logoutButton = new Button();
 
     @FXML
-    private Button backButton = new Button();
+    private Button homeButton;
 
     @FXML
     private TextField searchBar;
 
     @FXML
-    private HBox topRightHBox;
+    private Button searchButton = new Button();
 
-    public HeaderBar(Boolean backButton) {
+    public HeaderBar(Boolean homeButton) {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("HeaderBar.fxml"));
         fxmlLoader.setController(this);
@@ -59,8 +61,9 @@ public class HeaderBar extends HBox {
                 loginPage.setVisible(true);
                 loginPage.setDisable(false);
             }
-            if (backButton) {
-
+            if (!homeButton) {
+                this.homeButton.setVisible(false);
+                this.homeButton.setDisable(true);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -77,6 +80,45 @@ public class HeaderBar extends HBox {
     @FXML
     void keyTyped(KeyEvent event) {
 
+    }
+
+    /**
+     *
+     * @param event
+     *
+     * User has clicked search bar, deletes placeholder text
+     */
+    @FXML
+    void mouseClicked(MouseEvent event) {
+        if (searchBar.getText().equals("Search")) {
+            searchBar.setText("");
+        }
+    }
+
+    /**
+     *
+     * @param event
+     *
+     * Performs search and loads search results page
+     */
+    @FXML
+    void searchButtonPressed(ActionEvent event) throws IOException {
+        App.setData(searchBar.getText());
+        //switch to results page
+        App.setRoot("SearchResults");
+    }
+
+    /**
+     *
+     * @param event
+     *
+     * Detects if user hit "enter" key when entering search
+     */
+    @FXML
+    void searchShortcut(KeyEvent event) throws IOException {
+        if (event.getCode() == KeyCode.ENTER) {
+            searchButtonPressed(new ActionEvent());
+        }
     }
 
     /**
@@ -101,7 +143,10 @@ public class HeaderBar extends HBox {
     @FXML
     void logoutButtonPressed(ActionEvent event) throws IOException {
         App.STATUS = HeaderBar.Status.LOGGED_OUT;
-        App.setRoot("Homepage");
+        logoutButton.setVisible(false);
+        logoutButton.setDisable(true);
+        loginPage.setVisible(true);
+        loginPage.setDisable(false);
     }
 
     /**
@@ -111,7 +156,7 @@ public class HeaderBar extends HBox {
      * Switches to Homepage without interfering with login/logout status
      */
     @FXML
-    void backButtonPressed(ActionEvent event) throws IOException {
-        //TO-DO
+    void homeButtonPressed(ActionEvent event) throws IOException {
+        App.setRoot("Homepage");
     }
 }

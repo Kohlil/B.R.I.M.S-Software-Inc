@@ -13,8 +13,8 @@ public class Artist extends Generic<Artist> {
 	
 	private ArrayList<String> albums;
 	
-	public Artist(String name, String description, String genre, String releaseDate, String eLink, ArrayList<String> albums) {
-		super(name, description, genre, releaseDate, eLink);
+	public Artist(String name, String description, String genre, String eLink, ArrayList<String> albums) {
+		super(name, description, genre, "N/A", eLink);
 		setDataType(DataTypes.ARTIST);
 		this.albums = albums;
 	}
@@ -23,11 +23,6 @@ public class Artist extends Generic<Artist> {
         @Override
 	public String toString() {
 		return super.toString() + "," + albums;
-	}
-	
-        @Override
-	public String tags() {
-		return super.tags();
 	}
 
 	public ArrayList<String> getAlbums() {
