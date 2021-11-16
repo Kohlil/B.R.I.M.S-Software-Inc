@@ -15,7 +15,8 @@ GO
 /****** Object:  Table Profiles  ******/   
 CREATE TABLE Profiles(
 	userId		VARCHAR(32)			NOT NULL,
-	pass		VARCHAR(32)			NOT NULL
+	pass		VARCHAR(32)			NOT NULL,
+	adminAccess	BIT					NOT NULL
 )
 GO
 
@@ -25,12 +26,12 @@ CREATE TABLE Songs(
 	albumId				INT				NOT NULL,
 	artistId			INT				NOT NULL,
 	songName			VARCHAR(64)		NOT NULL,
-	songGenre			VARCHAR(32)		NOT NULL,
-	songDesc			VARCHAR(1024)	NOT NULL,
-	songLink			VARCHAR(128)	NOT NULL,
-	songReleaseDate		VARCHAR(16)		NOT NULL,
-	songPrice			FLOAT			NOT NULL,
-	songLength			VARCHAR(16)		NOT NULL,
+	songGenre			VARCHAR(64)		,
+	songDesc			VARCHAR(1024)	,
+	songLink			VARCHAR(128)	,
+	songReleaseDate		VARCHAR(16)		,
+	songPrice			FLOAT			,
+	songLength			VARCHAR(16)		,
 	CONSTRAINT PK_Songs PRIMARY KEY CLUSTERED (
 		songId ASC
 	)
@@ -42,11 +43,11 @@ CREATE TABLE Albums(
 	albumId				INT				IDENTITY(1,1)	NOT NULL,
 	artistId			INT				NOT NULL,
 	albumName			VARCHAR(64)		NOT NULL,
-	albumGenre			VARCHAR(32)		NOT NULL,
-	albumDesc			VARCHAR(1200)	NOT NULL,
-	albumLink			VARCHAR(128)	NOT NULL,
-	albumReleaseDate	VARCHAR(16)		NOT NULL,
-	albumPrice			FLOAT			NOT NULL
+	albumGenre			VARCHAR(64)		,
+	albumDesc			VARCHAR(1200)	,
+	albumLink			VARCHAR(128)	,
+	albumReleaseDate	VARCHAR(16)		,
+	albumPrice			FLOAT			
 	CONSTRAINT PK_Albums PRIMARY KEY CLUSTERED (
 		albumId ASC
 	)
@@ -56,24 +57,104 @@ GO
 /****** Object:  Table Artist  ******/
 CREATE TABLE Artists(
 	artistId			INT				IDENTITY(1,1)	NOT NULL,
-	artistName			VARCHAR(32)		NOT NULL,
-	artistGenre			VARCHAR(32)		NOT NULL,
-	artistDesc			VARCHAR(1200)	NOT NULL,
-	artistLink			VARCHAR(128)	NOT NULL,
+	artistName			VARCHAR(64)		NOT NULL,
+	artistGenre			VARCHAR(64)		,
+	artistDesc			VARCHAR(1200)	,
+	artistLink			VARCHAR(128)	,
 	CONSTRAINT PK_Artists PRIMARY KEY CLUSTERED (
 		artistId ASC
 	)
 )
 GO
 
-/*
-CREATE TRIGGER songInsert_TRIGGER ON InvoiceLineItems
-			FOR INSERT
-		AS BEGIN
-
-		END
+/* Functions */
+CREATE FUNCTION dbo.search(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
+			al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice, 
+			a.artistName, a.artistGenre, a.artistDesc, a.artistLink
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	s.songName LIKE ('%' + @search + '%') OR
+			s.songGenre LIKE ('%' + @search + '%') OR
+			al.albumName LIKE ('%' + @search + '%') OR
+			al.albumGenre LIKE ('%' + @search + '%') OR
+			a.artistName LIKE ('%' + @search + '%') OR
+			a.artistGenre LIKE ('%' + @search + '%') OR
+			s.songLink = @search OR
+			al.albumLink = @search OR
+			a.artistLink = @search
 GO
-*/
+
+
+CREATE PROC spAddSong
+	@albumName			VARCHAR(64),
+	@artistName			VARCHAR(64),
+	@songName			VARCHAR(64), 
+	@songGenre			VARCHAR(64),
+	@songDesc			VARCHAR(1200),
+	@songLink			VARCHAR(128),
+	@songReleaseDate	VARCHAR(16),
+	@songPrice			FLOAT,	
+	@songLength			VARCHAR(16),
+
+	@albumGenre			VARCHAR(64),
+	@albumDesc			VARCHAR(1200),
+	@albumLink			VARCHAR(128),
+	@albumReleaseDate	VARCHAR(16),
+	@albumPrice			FLOAT,
+
+	@artistGenre		VARCHAR(64),
+	@artistDesc			VARCHAR(1200),
+	@artistLink			VARCHAR(128)
+AS BEGIN SET NOCOUNT ON
+	DECLARE @albumId INT, @artistId INT, @songId INT
+
+	/* Checks if the song exists in the song table, if id already exists, then return, the add is not necessary */
+	SELECT @songId = ISNULL(songId,-1) FROM Songs WHERE songName = @songName
+	IF(@songId > 0) RETURN;
+
+	SELECT @albumId = ISNULL(albumId,-1) FROM Albums WHERE albumName = @albumName
+	SELECT @artistId = ISNULL(artistId,-1) FROM Artists WHERE artistName = @artistName
+
+	/* Checks if the artist exists in the artist table, if not creates a new entry */
+	IF(@artistId IS NULL) BEGIN
+		INSERT INTO Artists(artistName, artistGenre, artistDesc, artistLink) VALUES (@artistName, @artistGenre, @artistDesc, @artistLink)
+		SET @artistId = @@IDENTITY
+	END
+
+	/* Checks if the albums exists in the albums table, if not creates a new entry */
+	IF(@albumId IS NULL) BEGIN
+		INSERT INTO Albums (artistId, albumName, albumGenre, albumDesc, albumLink, albumReleaseDate, albumPrice) VALUES (@artistId, @albumName, @albumGenre, @albumDesc, @albumLink, @albumReleaseDate, @albumPrice)
+		SET @albumId = @@IDENTITY
+	END
+	
+	/* At this point, new entires for artist and albums have been created if necessary , meaning we can now safely insert a new song */
+	INSERT INTO Songs (albumId, artistId, songName, songGenre, songDesc, songLink, songReleaseDate, songPrice, songLength) VALUES (@albumId, @artistId, @songName, @songGenre, @songDesc, @songLink, @songReleaseDate, @songPrice, @songLength)
+
+	
+END
+GO
+
+CREATE PROC spAddProfile
+	@username		VARCHAR(32),
+	@pass			VARCHAR(32),
+	@adminAccess	BIT
+AS BEGIN SET NOCOUNT ON
+	DECLARE @userId VARCHAR(32)
+
+	/* Checks if the song exists in the song table, if id already exists, then return, the add is not necessary */
+	SELECT @userId = ISNULL(userId, NULL) FROM Profiles WHERE userId = @username
+	IF(@userId IS NOT NULL) BEGIN
+		RETURN;
+	END
+	
+	/* At this point, new entires for artist and albums have been created if necessary , meaning we can now safely insert a new song */
+	INSERT INTO Profiles (userId, pass, adminAccess) VALUES (@username, @pass, @adminAccess)
+	
+END
+GO
 
 
 INSERT Songs(albumId, artistId, songName, songGenre, songDesc, songLink, songReleaseDate, songPrice, songLength) VALUES
@@ -148,13 +229,21 @@ INSERT Artists(artistName, artistGenre, artistDesc, artistLink) VALUES
 ('Kesha',				'Pop', 'Kesha Rose Sebert, known mononymously as Kesha, is an American singer and songwriter. In 2005, at age 18, Kesha was signed to Kemosabe Records. Her first major success came in early 2009 after she was featured on American rapper Flo Rida''s number-one single "Right Round". Kesha''s music and image propelled her to immediate success. She has earned two number-one albums on the US Billboard 200 with Animal and Rainbow, and the top-ten records Warrior and High Road. Kesha has attained ten top-ten singles on the US Billboard Hot 100, including "Tik Tok", "Blah Blah Blah", "Your Love Is My Drug", "Take It Off", "Blow", "Die Young", "My First Kiss" with 3OH!3, "We R Who We R", "Right Round" with Flo Rida, and "Timber" with Pitbull. Her 2009 single "Tik Tok" was the best-selling digital single in history, selling over 14 million units internationally, until surpassed in 2011. Kesha''s career was halted between Warrior and Rainbow due to a legal dispute with her former producer Dr. Luke, which has been ongoing since 2014. A series of lawsuits, known collectively as Kesha v. Dr.', 'https://music.youtube.com/channel/UC4dTCL_is1o-dQLksanXmRg')
 GO
 
-INSERT Profiles(userId, pass) VALUES
-('Bricen', 'group17'),
-('Rylee', 'group17'),
-('Manas', 'group17'),
-('Shane', 'group17'),
-('Isaiah', 'group17')
+INSERT Profiles(userId, pass, adminAccess) VALUES
+('Bricen',	'group17', 1),
+('Rylee',	'group17', 1),
+('Manas',	'group17', 1),
+('Shane',	'group17', 1),
+('Isaiah',	'group17', 1)
 GO
+
+/*
+SELECT * FROM Profiles
+SELECT * FROM Songs
+SELECT * FROM Albums
+SELECT * FROM Artists
+GO
+*/
 
 SELECT * FROM Profiles
 SELECT * FROM Songs
@@ -162,26 +251,71 @@ SELECT * FROM Albums
 SELECT * FROM Artists
 GO
 
-/* Functions */
-CREATE FUNCTION dbo.search(@search VARCHAR(1024))
-RETURNS TABLE
-RETURN
-	SELECT	s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
-			al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice, 
-			a.artistName, a.artistGenre, a.artistDesc, a.artistLink
-	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
-					JOIN Artists a ON al.artistId = a.artistId
-	WHERE	s.songName LIKE ('%' + @search + '%') OR
-			s.songGenre LIKE ('%' + @search + '%') OR
-			al.albumName LIKE ('%' + @search + '%') OR
-			al.albumGenre LIKE ('%' + @search + '%') OR
-			a.artistName LIKE ('%' + @search + '%') OR
-			a.artistGenre LIKE ('%' + @search + '%') OR
-			s.songLink = @search OR
-			al.albumLink = @search OR
-			a.artistLink = @search
+EXEC spAddSong
+	@albumName			= 'Hotel Diablo',
+	@artistName			= 'Machine Gun Kelly',
+	@songName			= 'FLOOR 13', 
+	@songGenre			= 'Rap',
+	@songDesc			= 'Another song from Hotel Diablo by MGK',
+	@songLink			= 'https://music.youtube.com/watch?v=oIm-GQml3ew&feature=share',
+	@songReleaseDate	= '7/5/2019',
+	@songPrice			= 1.29,
+	@songLength			= '3:15',
+	
+	@albumGenre			= 'Rap',
+	@albumDesc			= 'Hotel Diablo is the fourth studio album by American rapper Machine Gun Kelly. It was released on July 5, 2019 via Bad Boy Records and Interscope Records. The album was supported by four singles: "Hollywood Whore", "El Diablo", "I Think I''m Okay" with Yungblud and Travis Barker, and "Glass House" featuring Naomi Wild, with promotional single "Floor 13". The record is a rap rock album and followed less than 10 months after September 2018''s Binge EP. The album''s production also included Foster The People frontman Mark Foster. It debuted at number five on the US Billboard 200. The album has received generally positive reviews. Lyrically, the songs deal with problems with drugs, childhood family struggles, among other themes.',
+	@albumLink			= 'https://music.youtube.com/playlist?list=OLAK5uy_mhxPh_P5otpvlSx722VEqzyIlenwdyy8Y',
+	@albumReleaseDate	= '7/5/2019',
+	@albumPrice			= 9.99,
+
+	@artistGenre		= 'Punk/rap/hip-hop',
+	@artistDesc			= 'Colson Baker, known professionally as Machine Gun Kelly, is an American rapper, singer, and actor. He is noted for his compositional blending of contemporary and alternative hip hop with rock. Machine Gun Kelly released four mixtapes between 2007 and 2010 before signing with Bad Boy Records. He released his debut studio album, Lace Up, in 2012, which peaked at number four on the US Billboard 200 and contained his breakout single "Wild Boy". His second and third albums, General Admission and Bloom, achieved similar commercial success; the latter included the single "Bad Things", which peaked at number 4 on the Billboard Hot 100. His fourth album, Hotel Diablo, included rap rock. Machine Gun Kelly released his fifth album, Tickets to My Downfall, in 2020; it marked a complete departure from hip hop and entry into pop punk. It debuted at number one on the Billboard 200, the only rock album to do so that year, and contained the single "My Ex''s Best Friend", which reached number 20 on the Hot 100.',
+	@artistLink			= 'https://music.youtube.com/channel/UCDbLC4CaZzi4jt5KyAF0ZQw'
 GO
 
-/* Normal search result query */
-SELECT * FROM dbo.search('title')
+EXEC spAddSong
+	@albumName			= 'test album',
+	@artistName			= 'test artist',
+	@songName			= 'test song', 
+	@songGenre			= 'test genre',
+	@songDesc			= 'test description',
+	@songLink			= 'test link',
+	@songReleaseDate	= '11/15/2021',
+	@songPrice			= 999.99,
+	@songLength			= '9:99',
+
+	@albumGenre			= 'Rap',
+	@albumDesc			= 'test album description',
+	@albumLink			= 'test album link',
+	@albumReleaseDate	= '7/5/2019',
+	@albumPrice			= 9.99,
+	
+	@artistGenre		= 'test artist genre',
+	@artistDesc			= 'test artist description',
+	@artistLink			= 'test artist link'
+GO
+
+EXEC spAddProfile
+	@username		=	'test user',
+	@pass			=	'test password',
+	@adminAccess	=	1
+GO
+
+EXEC spAddProfile
+	@username		=	'Shane',
+	@pass			=	'test password',
+	@adminAccess	=	0
+GO
+
+
+SELECT * FROM Profiles
+SELECT * FROM Songs
+SELECT * FROM Albums
+SELECT * FROM Artists
+GO
+
+SELECT * FROM dbo.search('test')
+GO
+
+SELECT * FROM dbo.search('FLOOR 13')
 GO
