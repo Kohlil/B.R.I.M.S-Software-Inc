@@ -15,10 +15,10 @@ public class Song extends Generic<Song> {
 	private String songLength;
 	private String artistName;
 	
-	public Song(String name, String description, String genre, String releaseDate, String eLink, String artistName, String album, String price, String songLength) {
+	public Song(String name, String description, String genre, String releaseDate, String eLink,, String album, String price, String songLength, String artist) {
 		super(name, description, genre, releaseDate, eLink);
-		setDataType(1);  
-		this.artistName = artistName;
+		setDataType(DataTypes.SONG);  
+		this.artist = artist;
 		this.price = price;
 		this.songLength = songLength;
 		this.album = album;
