@@ -48,7 +48,7 @@
                         </HBox>
                         <HBox prefWidth="144.0" spacing="5.0">
                            <children>
-                              <Label text="Released:" />
+                              <Label fx:id="releasedLabel" text="Released:" />
                               <Label fx:id="released" text="XX/XX/XXXX" HBox.hgrow="SOMETIMES" />
                            </children>
                         </HBox>
@@ -64,7 +64,7 @@
                         </HBox>
                         <HBox prefWidth="144.0" spacing="5.0">
                            <children>
-                              <Label text="Length:" />
+                              <Label fx:id="lengthLabel" text="Length:" />
                               <Label fx:id="length" text="3:04" HBox.hgrow="SOMETIMES" />
                            </children>
                         </HBox>

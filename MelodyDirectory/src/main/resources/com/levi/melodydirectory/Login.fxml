@@ -5,20 +5,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" spacing="5.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.LoginController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" spacing="5.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.LoginController">
    <children>
-      <Label text="Melody Directory">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-      </Label>
+      <HBox alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="255.0" HBox.hgrow="ALWAYS">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                  <Button id="backButton" mnemonicParsing="false" onAction="#homePressed" prefHeight="0.0" prefWidth="0.0" styleClass="backButton" stylesheets="@ElementViewStyleSheet.css">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@backArrow.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Label alignment="CENTER" text="Melody Directory">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="0.0" prefWidth="255.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
       <Separator prefHeight="89.0" prefWidth="720.0" visible="false" />
       <Label fx:id="loginErrorLabel" text="Please enter a valid username and password" textFill="#e14721" visible="false">
          <font>
@@ -32,7 +58,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTextField" onKeyPressed="#loginShortcut" />
+            <TextField fx:id="usernameTextField" onKeyPressed="#loginShortcut" styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
@@ -45,13 +71,14 @@
                   <Insets right="5.0" />
                </padding>
             </Label>
-            <TextField fx:id="passwordTextField" onKeyPressed="#loginShortcut" />
+            <TextField fx:id="passwordTextField" onKeyPressed="#loginShortcut" styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
          </children>
       </HBox>
-      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="26.0" prefWidth="77.0" text="Login">
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="26.0" prefWidth="78.0" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Login">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
+      <Button mnemonicParsing="false" onAction="#newUserPressed" prefHeight="26.0" prefWidth="78.0" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="New User?" />
    </children>
 </VBox>

@@ -1,4 +1,40 @@
-.ElementView {
-    -fx-border-radius: 0 0 10 10;
-    border-radius: 0 0 10 10;
+/*
+Color Palette(Darkest to Brightest):
+	-#03045e
+	-#0077b6
+	-#00b4d8
+	-#90e0ef
+	-#cafof8
+
+	Possibly an error with different JavaFX  versions?
+*/
+
+/*Default styling for all components*/
+.buttonMain {
+	-fx-background-color:#90e0ef;
+}
+
+.vbox {
+	-fx-background-color:#00b4d8;
+}
+
+.listview {
+	-fx-background-color:#00b4d8;
+}
+
+.textarea {
+	-fx-background-color:#00b4d8;
+}
+
+.textfield {
+	-fx-background-color:#90e0ef;
+}
+
+.label {
+	
+}
+
+/*Styling for specific objects by custom ID*/
+.backButton {
+	-fx-background-color:rgba(0,0,0,0);
 }
