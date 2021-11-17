@@ -4,7 +4,7 @@ Color Palette(Darkest to Brightest):
 	-#0077b6
 	-#00b4d8
 	-#90e0ef
-	-#cafof8
+	-#caf8f8
 
 	Possibly an error with different JavaFX  versions?
 */
@@ -12,29 +12,63 @@ Color Palette(Darkest to Brightest):
 /*Default styling for all components*/
 .buttonMain {
 	-fx-background-color:#90e0ef;
+	-fx-background-insets: 0 0 0 0;
 }
 
 .vbox {
-	-fx-background-color:#00b4d8;
+	-fx-background-color: linear-gradient(to bottom right, #caf0f8, #00b4d8)
 }
 
 .listview {
-	-fx-background-color:#00b4d8;
+	-fx-background-color: rgba(0,0,0,0);
 }
 
 .textarea {
-	-fx-background-color:#00b4d8;
+	-fx-background-color:rgba(0,0,0,0);
 }
 
 .textfield {
-	-fx-background-color:#90e0ef;
+	-fx-background-color:rgba(0,0,0,0);
+	-fx-border-radius: 3 3 3 3;
+	-fx-border-color: black;
 }
 
-.label {
-	
+.list-cell {
+	-fx-padding: 3;
+	-fx-background-color:rgba(0,0,0,0);
+	-fx-background-insets: 0 0 0 0;
+}
+
+.list-cell:odd{
+	-fx-background-color:rgba(0,0,0,0);
+	-fx-padding: 3;
+	-fx-background-insets: 0 0 0 0;
 }
 
 /*Styling for specific objects by custom ID*/
-.backButton {
+.transparent {
 	-fx-background-color:rgba(0,0,0,0);
+}
+
+.searchButton {
+    -fx-background-radius: 5 0 0 5;
+	-fx-background-color:#90e0ef;
+	-fx-background-insets: 0 0 0 0;
+}
+
+.searchBar {
+	-fx-background-radius: 0 5 5 0;
+	-fx-background-color:#90e0ef;
+	-fx-background-insets: 0 0 0 0;
+}
+
+.hyperlink {
+	-fx-text-fill: #03045e;
+}
+
+.elementView {
+	-fx-padding: 0;
+	-fx-background-color:linear-gradient(to bottom right, derive(#0077b6) 5%, #0077b6);/*this doesn't work*/
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius:10 10 10 10;
 }

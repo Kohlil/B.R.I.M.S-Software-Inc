@@ -15,6 +15,7 @@ import java.util.Stack;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Paint;
 
 public class App extends Application {
 

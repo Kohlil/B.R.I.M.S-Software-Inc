@@ -23,9 +23,9 @@
                   <Insets />
                </HBox.margin>
                <children>
-                  <Button id="backButton" mnemonicParsing="false" onAction="#homePressed" prefHeight="0.0" prefWidth="0.0" styleClass="backButton" stylesheets="@ElementViewStyleSheet.css">
+                  <Button id="backButton" mnemonicParsing="false" onAction="#homePressed" prefHeight="0.0" prefWidth="0.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css">
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                        <ImageView fitHeight="40.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" smooth="false" styleClass="transparent">
                            <image>
                               <Image url="@backArrow.png" />
                            </image>

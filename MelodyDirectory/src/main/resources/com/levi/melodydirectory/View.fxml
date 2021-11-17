@@ -4,13 +4,12 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="rootVBox" prefHeight="420.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.ViewController">
+<VBox fx:id="rootVBox" prefHeight="420.0" prefWidth="720.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.ViewController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
          <children>
@@ -31,11 +30,6 @@
                   </Label>
                </children>
             </HBox>
-            <Separator prefWidth="200.0">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" />
-               </padding>
-            </Separator>
             <HBox maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0">
@@ -80,11 +74,6 @@
                   <Label fx:id="price" text="\$2.99" />
                </children>
             </HBox>
-            <Separator prefWidth="200.0">
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
-            </Separator>
             <Label text="Also see">
                <VBox.margin>
                   <Insets left="1.0" />
@@ -93,7 +82,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ListView fx:id="alsoSeeSlider" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="711.0" />
+            <ListView fx:id="alsoSeeSlider" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="711.0" styleClass="listview" stylesheets="@ElementViewStyleSheet.css" />
          </children>
       </VBox>
    </children>

@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="55.0" prefWidth="618.0" styleClass="button" stylesheets="@ElementViewStyleSheet.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="55.0" prefWidth="618.0" styleClass="elementView" stylesheets="@ElementViewStyleSheet.css" type="StackPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="searchResultView" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <Label fx:id="name" alignment="CENTER" text="Pyscho">
+            <Label fx:id="name" alignment="CENTER" text="Pyscho" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -34,7 +34,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label fx:id="released" text="23/02/21">
+                  <Label fx:id="released" text="23/02/21" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
@@ -46,7 +46,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label fx:id="rating" text="97%">
+                  <Label fx:id="rating" text="97%" wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
@@ -57,6 +57,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <Button mnemonicParsing="false" onAction="#mouseClicked" opacity="0.0" prefHeight="87.0" prefWidth="642.0" stylesheets="@ElementViewStyleSheet.css" />
+      <Button mnemonicParsing="false" onAction="#mouseClicked" opacity="0.0" prefHeight="87.0" prefWidth="642.0" styleClass="elementView" stylesheets="@ElementViewStyleSheet.css" wrapText="true" />
    </children>
 </fx:root>
