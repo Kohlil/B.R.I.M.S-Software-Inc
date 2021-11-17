@@ -24,9 +24,9 @@ public class Song extends Generic<Song> {
 		this.album = album;
 	}
 	
-	// dataType, name, description, genre, releaseDate, eLink, album, price, songLength
+	// name, description, genre, releaseDate, eLink, album, price, songLength, artistName
 	public String toString() {
-		return super.toString() + "," + artist + "," + album + "," + price + "," + songLength;
+		return super.toString() + "," +  album + "," + price + "," + songLength + "," + artist;
 	}
 
 	public String getAlbum() {
