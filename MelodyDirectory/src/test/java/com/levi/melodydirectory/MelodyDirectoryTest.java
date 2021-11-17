@@ -51,7 +51,7 @@ class MelodyDirectoryTest {
 		Song song = new Song("Teenage Dream", "This song reminds me of one of my relationships", 
 				"Pop", "10/24/2009", "https://music.youtube.com/watch?v=fQoRohKYvy4&feature=share",
 				"Teenage Dream", "1.29",  "3:48",  "Katy Perry");
-		assertTrue(song.toString().equals(DataTypes.SONG+", Teenage Dream, This song reminds me of one of my relationships, Pop, 10/24/2009, https://music.youtube.com/watch?v=fQoRohKYvy4&feature=share, Teenage Dream, 1.29, 3:48, Katy Perry"));
+		assertTrue(song.toString().equals(DataTypes.SONG+",Teenage Dream,This song reminds me of one of my relationships,Pop,10/24/2009,https://music.youtube.com/watch?v=fQoRohKYvy4&feature=share,Teenage Dream,1.29,3:48,Katy Perry"));
 		}
 	
 	// grey
@@ -100,7 +100,7 @@ class MelodyDirectoryTest {
 		albums.add("Prism");
 		Artist artist = new Artist("Katy Perry",  "Living my dream",  "Pop",
 				"https://music.youtube.com/channel/UC_7s69e1mDS3lgcTMJEPjCg", albums);
-		assertTrue(artist.toString().equals(DataTypes.ARTIST+"Katy Perry, Living my dream, Pop, 10/24/2009, https://music.youtube.com/channel/UC_7s69e1mDS3lgcTMJEPjCg"+ albums.toString()));
+		assertTrue(artist.toString().equals(DataTypes.ARTIST+",Katy Perry,Living my dream,Pop,N/A,https://music.youtube.com/channel/UC_7s69e1mDS3lgcTMJEPjCg,"+ albums.toString()));
 		}
 
 }
