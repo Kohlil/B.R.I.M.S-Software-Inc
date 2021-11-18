@@ -120,8 +120,8 @@ public class ViewController implements Initializable {
             case ALBUM://set all fields to make sense for an album
                 Album tempAlbum = (Album)gen;
                 artist.setText(tempAlbum.getArtist());
-                albumLabel.setText("Label:");
-                album.setText(tempAlbum.getLabel());
+                albumLabel.setVisible(false);
+                album.setVisible(false);
                 price.setText(tempAlbum.getPrice());
                 lengthLabel.setVisible(false);
                 length.setVisible(false);

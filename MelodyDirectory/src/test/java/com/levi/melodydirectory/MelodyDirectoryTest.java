@@ -74,7 +74,7 @@ class MelodyDirectoryTest {
 		songs.add("The one that got Away");
 		Album album = new Album("Teenage Dream", "BOPPPS", "Pop", "10/24/2009", 
 				"https://music.youtube.com/watch?v=fQoRohKYvy4&feature=share",
-				"Katy Perry", songs, "Blah blah", "7.99");
+				"Katy Perry", songs, "7.99");
 		assertTrue(album.getSongs().get(0).equals("Teenage Dream"));
 		assertFalse(album.getPrice().equals("10/24/2009"));
 		assertFalse(album.getArtist().equals("Kady Perry"));

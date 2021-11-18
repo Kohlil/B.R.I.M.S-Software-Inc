@@ -51,7 +51,7 @@ public class HomePageController implements Initializable {
         ArrayList<String> songs = new ArrayList<>();
         songs.add("Sunflower");
         
-        recentlyAddedElementsObs.add(new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "https://open.spotify.com/album/35s58BRTGAEWztPo9WqCIs?si=8iHCAbVATSGRFvtr8CJNRw", "Various Artists", songs, "Marvel Studios", "$2.00"));
+        recentlyAddedElementsObs.add(new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "https://open.spotify.com/album/35s58BRTGAEWztPo9WqCIs?si=8iHCAbVATSGRFvtr8CJNRw", "Various Artists", songs, "$2.00"));
 
         // TO-DO Query DB for top Rated and recently added results, then
         

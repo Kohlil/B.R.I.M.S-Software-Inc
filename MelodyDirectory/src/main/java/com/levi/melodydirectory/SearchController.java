@@ -46,7 +46,7 @@ public class SearchController implements Initializable {
         resultsObs.add(new Artist("Post Malone", "The literal best", "Hip-Hop", "https://open.spotify.com/artist/246dkjvS1zLTtiykXe5h60?si=ouQAFxUQTIiG490PQAzKcw", new ArrayList<>()));
         ArrayList<String> songs = new ArrayList<>();
         songs.add("Sunflower");
-        resultsObs.add(new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "https://open.spotify.com/album/35s58BRTGAEWztPo9WqCIs?si=8iHCAbVATSGRFvtr8CJNRw", "Various Artists", songs, "Marvel Studios", "$2.00"));
+        resultsObs.add(new Album("SpiderMan Into the SpiderVerse", "Movie Soundtrack", "Pop", "10/18/18", "https://open.spotify.com/album/35s58BRTGAEWztPo9WqCIs?si=8iHCAbVATSGRFvtr8CJNRw", "Various Artists", songs, "$2.00"));
         //temp hard coded results
         
         
