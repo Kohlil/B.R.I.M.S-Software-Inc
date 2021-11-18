@@ -69,11 +69,25 @@ public class LoginController {
         }
     }
     
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     * 
+     * New User? button was clicked, loads CreateAccount page
+     */
     @FXML
     void newUserPressed(ActionEvent event) throws IOException {
         //App.setRoot("CreateAccount");
     }
     
+    /**
+     * 
+     * @param event
+     * @throws IOException
+     * 
+     * Home button was pressed, loads HomePage view
+     */
     @FXML
     void homePressed(ActionEvent event) throws IOException {
         App.setRoot("Homepage");

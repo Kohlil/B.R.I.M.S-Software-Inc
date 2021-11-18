@@ -1,21 +1,18 @@
 package com.levi.melodydirectory;
 
 /**
- * Author: Isaiah Kohl Date: 10/15/21 Purpose: Start point for application
+ * Author: Isaiah Kohl 
+ * Date: 10/15/21 
+ * Purpose: Start point for application
  */
-import java.io.File;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Stack;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Paint;
 
 public class App extends Application {
 
@@ -68,10 +65,20 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    /**
+     * 
+     * @param obj Data to be saved
+     * 
+     * Use this function to allow data to persist between pages penis
+     */
     public static void setData(Object obj) {
         scene.setUserData(obj);
     }
 
+    /**
+     * 
+     * @return Object that was saved between views
+     */
     public static Object getData() {
         return scene.getUserData();
     }

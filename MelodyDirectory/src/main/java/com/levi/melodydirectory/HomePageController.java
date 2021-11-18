@@ -1,7 +1,9 @@
 package com.levi.melodydirectory;
 
 /**
- * Author: Isaiah Kohl Date: 10/19/21 Purpose: Allows the GUI to trigger events
+ * Author: Isaiah Kohl 
+ * Date: 10/19/21 
+ * Purpose: Allows the GUI to trigger events
  * in the code. Connects home page to back-end of the code
  */
 import java.net.URL;
@@ -26,6 +28,13 @@ public class HomePageController implements Initializable {
     @FXML // fx:id="recentlyAddedSlider"
     private ListView<Generic> recentlyAddedSlider = new ListView<>();
 
+    /**
+     * 
+     * @param url
+     * @param rb
+     * 
+     * Loads recentlyAdded slider and topRated slider
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //add header bar to VBox

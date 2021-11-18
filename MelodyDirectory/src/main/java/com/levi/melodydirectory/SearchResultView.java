@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Author: Isaiah Kohl
+ * Date: 11/17/21
+ * Purpose: Controller and actual object for searchResultView
  */
 package com.levi.melodydirectory;
 
@@ -22,7 +22,7 @@ import javafx.scene.layout.StackPane;
  * @author isaia
  */
 public class SearchResultView extends StackPane implements Initializable {
-    private Generic gen;
+    private Generic gen;//the object this represents
 
     @FXML
     private HBox searchResultView = new HBox();
@@ -48,6 +48,13 @@ public class SearchResultView extends StackPane implements Initializable {
     @FXML
     private Label releasedLabel = new Label();
 
+    /**
+     * 
+     * @param gen Object represented
+     * @param dataType DataType of object to differentiate between types
+     * 
+     * Constructor for view
+     */
     public SearchResultView(Generic gen, DataTypes dataType) {
         super();
         this.gen = gen;
@@ -61,6 +68,13 @@ public class SearchResultView extends StackPane implements Initializable {
         }
     }
 
+    /**
+     * 
+     * @param arg0
+     * @param arg1 
+     * 
+     * Configures and sets all fields depending on dataType
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         name.setText(gen.getName());
@@ -95,6 +109,12 @@ public class SearchResultView extends StackPane implements Initializable {
         }
     }
     
+    /**
+     * 
+     * @param event 
+     * 
+     * When the element is clicked
+     */
     @FXML
     void mouseClicked(ActionEvent event) {
         try {

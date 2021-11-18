@@ -1,3 +1,9 @@
+/**
+ * Author: Isaiah Kohl
+ * Date: 11/10/21
+ * Purpose: Controller for Search Results page
+ */
+
 package com.levi.melodydirectory;
 
 import java.net.URL;
@@ -19,6 +25,13 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<Generic> resultSlider = new ListView<>();
 
+    /**
+     * 
+     * @param arg0
+     * @param arg1 
+     * 
+     * Loads search results and displays them in a listview of SearchResultView
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         rootVBox.getChildren().add(0, new HeaderBar(true));

@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Author: Isaiah Kohl
+ * Date: 11/4/21
+ * Purpose: Defines the GUI actions of the ElementView for sliders
  */
 package com.levi.melodydirectory;
 
@@ -23,10 +23,7 @@ import javafx.scene.layout.VBox;
  */
 public class ElementView extends StackPane implements Initializable {
 
-    private Generic gen;
-    private Song song;
-    private Album album;
-    private Artist artist;
+    private Generic gen;//Object to be shown
 
     @FXML
     private VBox elementView;
@@ -43,6 +40,13 @@ public class ElementView extends StackPane implements Initializable {
     @FXML
     private Label rating = new Label();
 
+    /**
+     * 
+     * @param gen
+     * @param dataType 
+     * 
+     * Create object
+     */
     public ElementView(Generic gen, DataTypes dataType) {
         super();
         this.gen = gen;
@@ -56,6 +60,13 @@ public class ElementView extends StackPane implements Initializable {
         }
     }
 
+    /**
+     * 
+     * @param arg0
+     * @param arg1 
+     * 
+     * set fields
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         name.setText(gen.getName());
@@ -64,6 +75,12 @@ public class ElementView extends StackPane implements Initializable {
         rating.setText(gen.getName());
     }
     
+    /**
+     * 
+     * @param event 
+     * 
+     * When user clicks this ElementView, loads View page
+     */
     @FXML
     void mouseClicked(ActionEvent event) {
         try {

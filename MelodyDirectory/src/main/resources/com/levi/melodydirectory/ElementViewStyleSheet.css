@@ -67,8 +67,10 @@ Color Palette(Darkest to Brightest):
 }
 
 .elementView {
-	-fx-padding: 0;
-	-fx-background-color:linear-gradient(to bottom right, derive(#0077b6) 5%, #0077b6);/*this doesn't work*/
+	-fx-padding: 5;
+	-fx-background-color:linear-gradient(to bottom right, #00afff, #0077b6);/*this doesn't work*/
 	-fx-background-insets: 0 0 0 0;
 	-fx-background-radius:10 10 10 10;
+	-fx-border-radius: 10 10 10 10;
+	-fx-border-color: black;
 }

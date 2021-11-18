@@ -69,7 +69,7 @@ public class ViewController implements Initializable {
      @FXML
     private Label lengthLabel = new Label();
     
-    private URL url;
+    private URL url;//url for 3rd party link to element
     
     
     /**
@@ -140,6 +140,8 @@ public class ViewController implements Initializable {
         alsoSeeSlider.getItems().addAll(alsoSeeObs);//add all items to visible slider
     }
     
+    
+    //launches web browser to 3rd party link
     @FXML
     void linkPressed(ActionEvent event) throws IOException {
         try {

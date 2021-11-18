@@ -23,6 +23,7 @@ import javafx.scene.layout.HBox;
  */
 public class HeaderBar extends HBox {
 
+    //Defines whether a user is logged in or logged out
     public static enum Status {
         LOGGED_IN,
         LOGGED_OUT
@@ -43,6 +44,12 @@ public class HeaderBar extends HBox {
     @FXML
     private Button searchButton = new Button();
 
+    /**
+     * 
+     * @param homeButton Whether the bar should contain a home button
+     * 
+     * Bar for the top of all pages to standardize methods and searches
+     */
     public HeaderBar(Boolean homeButton) {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("HeaderBar.fxml"));
@@ -50,12 +57,12 @@ public class HeaderBar extends HBox {
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();
-            if (App.STATUS == Status.LOGGED_IN) {
+            if (App.STATUS == Status.LOGGED_IN) {//user is logged in so show logout button
                 logoutButton.setVisible(true);
                 logoutButton.setDisable(false);
                 loginPage.setVisible(false);
                 loginPage.setDisable(true);
-            } else {
+            } else {//user is logged out so show login button
                 logoutButton.setVisible(false);
                 logoutButton.setDisable(true);
                 loginPage.setVisible(true);
