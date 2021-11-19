@@ -94,8 +94,4 @@ Delete account
 		isSysAdmin = false;
 		isSignedIn = false;
 	}
-	
-	public static void main(String[] args) {
-	
-    }
 }

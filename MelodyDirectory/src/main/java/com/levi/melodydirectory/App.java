@@ -69,7 +69,7 @@ public class App extends Application {
      * 
      * @param obj Data to be saved
      * 
-     * Use this function to allow data to persist between pages penis
+     * Use this function to allow data to persist between pages
      */
     public static void setData(Object obj) {
         scene.setUserData(obj);

@@ -65,7 +65,8 @@ public class HeaderBar extends HBox {
                 logoutButton.setDisable(false);
                 loginPage.setVisible(false);
                 loginPage.setDisable(true);
-            } else {//user is logged out so show login button
+            } 
+            else {//user is logged out so show login button
                 logoutButton.setVisible(false);
                 logoutButton.setDisable(true);
                 loginPage.setVisible(true);
