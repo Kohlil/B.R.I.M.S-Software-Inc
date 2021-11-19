@@ -1,1 +1,39 @@
 // This repository will serve as the code storage/pooling center for B.R.I.M.S Software Inc.
+Configuration instructions
+
+Installation instructions
+
+Operating instructions
+
+File Manifest (a list of files in the directory or archive)
+  - Album.java
+  - Artist.java
+  - App.java
+  - ElementCellFactory.java
+  - ElementView.java
+  - Generic.java
+  - HeaderBar.java
+  - HomePageController.java
+  - LoginController.java
+  - SearchController.java
+  - SearchResultCellFactory.java
+  - SearchResultView.java
+  - Search.java
+  - Start.java
+  - user.java
+  - ViewController.java
+  - ElementView.fxml
+  - ElementViewStyleSheet.css
+  - HeaderBar.fxml
+  - Homepage.fxml
+  - HomepageLoggedIn.fxml
+  - icon.png
+  - Login.fxml
+  - View.fxml
+  - ArtistTest.java
+  - SongTest.java
+  - dependency-reduced-pom.xlm
+  - nbactions.xml
+  - pom.xml
+  - create_melody_directory.sql
+  - info.txt
