@@ -1,9 +1,14 @@
 // This repository will serve as the code storage/pooling center for B.R.I.M.S Software Inc.
-Configuration instructions
+Configuration Instructions
+* For configuration requirements we suggest importing and using NetBeans IDE 12.0 as your Java IDE. 
+* It's the configuration that we abided by for B.R.I.M.S Software. 
+* We utilized Java 11 as our Java version, so considering it shall simplify building and launching the project. 
 
-Installation instructions
+Installation Instructions
+* While installing kindly import all the Maven files as it's a Maven based project.  
 
-Operating instructions
+Operating Instructions
+* Operating through the Melody Directory should be seamless as it provides user functionality, but if any doubts kindly refer to our directory's FAQ page. 
 
 File Manifest (a list of files in the directory or archive)
   - Album.java
