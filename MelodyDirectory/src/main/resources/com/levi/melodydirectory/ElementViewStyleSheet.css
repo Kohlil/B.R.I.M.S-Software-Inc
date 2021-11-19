@@ -25,12 +25,14 @@ Color Palette(Darkest to Brightest):
 
 .textarea {
 	-fx-background-color:rgba(0,0,0,0);
+	-fx-prompt-text-fill: rgba(0,0,0,0);
 }
 
 .textfield {
 	-fx-background-color:rgba(0,0,0,0);
 	-fx-border-radius: 3 3 3 3;
 	-fx-border-color: black;
+	-fx-background-color:#90e0ef;
 }
 
 .list-cell {

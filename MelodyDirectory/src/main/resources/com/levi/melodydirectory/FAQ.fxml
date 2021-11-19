@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootVBox" prefHeight="420.0" prefWidth="720.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.FAQController">
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <children>
+      <Label text="FAQ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" styleClass="textarea" stylesheets="@ElementViewStyleSheet.css" text="Q: How can I find new songs similar to what I already like?&#10;A: At its base, Melody Directory is exactly that; a seamless way to find new music that matches what you already &#10;    listen to, but also expands your access to new artists and albums. By peering through the Top Rated and Recently &#10;    added sliders, we hope you might find something new that you can enjoy.&#10;&#10;Q: Can I search for specific songs and artists I like?&#10;A: Of course! There is a search bar in the top right that allows you to search for a specific song or artist. Enter any term you &#10;     like and let us take care of the rest.&#10;&#10;Q: I get I can search for songs I already know, but how do I find completely new songs?&#10;A: When you search for a song you already know and look at the detailed view of it, there is a section at the bottom &#10;    which suggests new content from the same album, artist, or genre. Now you have ten times as many songs to listen to!&#10;&#10;Q: Why can't I leave comments?&#10;A: You can, however you must first login or create an account. To login, start at the homepage and select &#10;    Login -&gt; New User? then fill out all the required fields. Once logged in you can leave as many comments as you like!" wrapText="true" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>

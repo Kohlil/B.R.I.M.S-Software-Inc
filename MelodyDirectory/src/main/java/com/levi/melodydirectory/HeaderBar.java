@@ -36,7 +36,10 @@ public class HeaderBar extends HBox {
     private Button logoutButton = new Button();
 
     @FXML
-    private Button homeButton;
+    private Button homeButton = new Button();
+    
+    @FXML
+    private Button faqButton = new Button();
 
     @FXML
     private TextField searchBar;
@@ -71,6 +74,14 @@ public class HeaderBar extends HBox {
             if (!homeButton) {
                 this.homeButton.setVisible(false);
                 this.homeButton.setDisable(true);
+                faqButton.setVisible(true);
+                faqButton.setDisable(false);   
+            }
+            else {
+                this.homeButton.setVisible(true);
+                this.homeButton.setDisable(false);
+                faqButton.setVisible(false);
+                faqButton.setDisable(true);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -165,5 +176,16 @@ public class HeaderBar extends HBox {
     @FXML
     void homeButtonPressed(ActionEvent event) throws IOException {
         App.setRoot("Homepage");
+    }
+    
+    /**
+     * 
+     * @param event
+     * 
+     * Switches to FAQ page
+     */
+    @FXML
+    void faqButtonPressed(ActionEvent event) throws IOException {
+        App.setRoot("FAQ");
     }
 }

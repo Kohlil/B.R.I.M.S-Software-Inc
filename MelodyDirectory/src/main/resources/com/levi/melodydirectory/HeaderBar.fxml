@@ -13,7 +13,12 @@
    <children>
       <HBox alignment="CENTER_LEFT" maxHeight="25.6" prefWidth="200.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" HBox.hgrow="ALWAYS">
          <children>
-            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Home" />
+            <StackPane>
+               <children>
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Home" />
+                  <Button fx:id="faqButton" mnemonicParsing="false" onAction="#faqButtonPressed" prefHeight="26.0" prefWidth="46.0" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="FAQ" />
+               </children>
+            </StackPane>
          </children>
       </HBox>
       <HBox fx:id="topRightHBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">

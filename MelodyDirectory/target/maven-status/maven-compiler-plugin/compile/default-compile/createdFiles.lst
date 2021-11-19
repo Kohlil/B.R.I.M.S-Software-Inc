@@ -19,5 +19,6 @@ com\levi\melodydirectory\HeaderBar$Status.class
 com\levi\melodydirectory\App.class
 com\levi\melodydirectory\Generic$DataTypes.class
 com\levi\melodydirectory\ElementCellFactory.class
+com\levi\melodydirectory\FAQController.class
 com\levi\melodydirectory\Artist.class
 com\levi\melodydirectory\HomePageController.class
