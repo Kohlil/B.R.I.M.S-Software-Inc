@@ -11,6 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Rylee Domonkos
+ * Tests various functions
+ */
 class MelodyDirectoryTest {
 
 	// white

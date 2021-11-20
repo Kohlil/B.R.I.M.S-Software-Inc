@@ -6,8 +6,15 @@ import org.junit.jupiter.api.Test;
 
 import com.levi.melodydirectory.Generic.DataTypes;
 
+/**
+ * @author Bricen Raynold
+ * Tester class for Artist
+ */
 class ArtistTest {
 	
+	/**
+	 * Tests toString()
+	 */
 	@Test
 	void testToString() {
 		// Artist: name, desc, genre, releaseDate, eLink, albums
@@ -21,6 +28,9 @@ class ArtistTest {
 		assertEquals("Wrong".equals(marvel.toString()), false);
 	}
 
+	/**
+	 * Tests artist constructor
+	 */
 	@Test
 	void testArtist() {
 		ArrayList<String> albums = new ArrayList<>();
@@ -35,6 +45,9 @@ class ArtistTest {
 		assertEquals(marvel.getDataType(), DataTypes.ARTIST);
 	}
 
+	/**
+	 * Tests getAlbums()
+	 */
 	@Test
 	void testGetAlbums() {
 		ArrayList<String> albums = new ArrayList<>();
@@ -47,6 +60,9 @@ class ArtistTest {
 		assertEquals(albums2, marvel.getAlbums());
 	}
 
+	/**
+	 * Tests setAlbums()
+	 */
 	@Test
 	void testSetAlbums() {
 		ArrayList<String> albums = new ArrayList<>();

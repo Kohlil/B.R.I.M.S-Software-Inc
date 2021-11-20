@@ -8,8 +8,15 @@ import org.junit.jupiter.api.Test;
 
 import com.levi.melodydirectory.Generic.DataTypes;
 
+/**
+ * @author Bricen Raynold
+ * Tester class for Album
+ */
 class AlbumTest {
 
+	/**
+	 * Tests the album constructor
+	 */
 	@Test
 	void testAlbum() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -26,6 +33,9 @@ class AlbumTest {
 		assertEquals(a.getDataType(), DataTypes.ALBUM);
 	}
 	
+	/**
+	 * Tests getArtist()
+	 */
 	@Test
 	void testGetArtist() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -37,6 +47,9 @@ class AlbumTest {
 		assertEquals(a.getArtist(), "Kanye West");
 	}
 	
+	/**
+	 * Tests setArtist()
+	 */
 	@Test
 	void testSetArtist() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -48,6 +61,9 @@ class AlbumTest {
 		assertEquals(a.getArtist(), "Kanye West");
 	}
 	
+	/**
+	 * Tests getPrice()
+	 */
 	@Test
 	void testGetPrice() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -59,6 +75,9 @@ class AlbumTest {
 		assertEquals(a.getPrice(), "$2.00");
 	}
 	
+	/**
+	 * Tests setPrice()
+	 */
 	@Test
 	void testSetPrice() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -70,6 +89,9 @@ class AlbumTest {
 		assertEquals(a.getPrice(), "$2.00");
 	}
 	
+	/**
+	 * Tests getSongs()
+	 */
 	@Test
 	void testGetSongs() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -83,6 +105,9 @@ class AlbumTest {
 		assertEquals(a.getSongs(),s2);
 	}
 	
+	/**
+	 * Tests setSongs()
+	 */
 	@Test
 	void testSetSongs() {
 		ArrayList<String> s = new ArrayList<String>();
@@ -96,6 +121,9 @@ class AlbumTest {
 		assertEquals(a.getSongs(),s2);
 	}
 	
+	/**
+	 * Tests toString();
+	 */
 	@Test
 	void testToString() {
 		ArrayList<String> s = new ArrayList<String>();
