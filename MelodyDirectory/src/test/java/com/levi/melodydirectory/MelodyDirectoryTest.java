@@ -38,14 +38,14 @@ class MelodyDirectoryTest {
 	// black
 	@Test
 	void test_isUserCommentMod() {
-		user comMod = new user("DanTDM", "robloxsux");
+		User comMod = new User("DanTDM", "robloxsux");
 		assertFalse(comMod.isCommentMod());
 	}
 	
 	// black
 	@Test
 	void test_isUserAdministrator() {
-		user comMod = new user("DanTDM", "robloxsux");
+		User comMod = new User("DanTDM", "robloxsux");
 		assertFalse(comMod.isSysAdmin());
 		}
 	

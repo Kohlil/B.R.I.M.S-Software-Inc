@@ -6,8 +6,9 @@ com\levi\melodydirectory\Start.class
 com\levi\melodydirectory\LoginController.class
 com\levi\melodydirectory\ViewController$1.class
 module-info.class
-com\levi\melodydirectory\user.class
 com\levi\melodydirectory\SearchResultView.class
+com\levi\melodydirectory\User.class
+com\levi\melodydirectory\DBreturn.class
 com\levi\melodydirectory\Generic.class
 com\levi\melodydirectory\Song.class
 com\levi\melodydirectory\Album.class
