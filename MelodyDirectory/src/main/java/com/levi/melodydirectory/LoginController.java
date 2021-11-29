@@ -7,15 +7,22 @@ package com.levi.melodydirectory;
  */
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader
@@ -28,6 +35,9 @@ public class LoginController {
     
     @FXML // fx:id="loginErrorLabel"
     private Label loginErrorLabel; // Value injected by FXMLLoader
+    
+    @FXML
+    private VBox root = new VBox();
 
     
     
@@ -78,7 +88,7 @@ public class LoginController {
      */
     @FXML
     void newUserPressed(ActionEvent event) throws IOException {
-        //App.setRoot("CreateAccount");
+        App.setRoot("CreateUser");
     }
     
     /**
@@ -91,6 +101,18 @@ public class LoginController {
     @FXML
     void homePressed(ActionEvent event) throws IOException {
         App.setRoot("Homepage");
+    }
+
+    /**
+     * 
+     * @param arg0
+     * @param arg1 
+     * 
+     * Adds header bar to top of page
+     */
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        root.getChildren().add(0, new HeaderBar(HeaderBar.Page.LOGINPAGE));
     }
 
 }

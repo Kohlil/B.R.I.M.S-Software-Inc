@@ -38,7 +38,7 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //add header bar to VBox
-        rootVBox.getChildren().add(0, new HeaderBar(false));
+        rootVBox.getChildren().add(0, new HeaderBar(HeaderBar.Page.HOMEPAGE));
         
         ObservableList<Generic> topRatedElementsObs = FXCollections.observableArrayList();
         ObservableList<Generic> recentlyAddedElementsObs = FXCollections.observableArrayList();

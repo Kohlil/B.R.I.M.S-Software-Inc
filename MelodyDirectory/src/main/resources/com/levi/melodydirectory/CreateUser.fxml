@@ -5,134 +5,47 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" spacing="5.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.LoginController">
+<VBox fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" spacing="5.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.CreateUserController">
    <children>
-      <javafx.scene.layout.HBox alignment="CENTER" maxHeight="0.0" prefHeight="20.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css">
-         <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="25.6" prefWidth="200.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" HBox.hgrow="ALWAYS">
-               <children>
-                  <StackPane>
-                     <children>
-                        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeButtonPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Home" />
-                        <Button fx:id="faqButton" mnemonicParsing="false" onAction="#faqButtonPressed" prefHeight="26.0" prefWidth="46.0" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="FAQ" />
-                     </children>
-                  </StackPane>
-               </children>
-            </HBox>
-            <HBox fx:id="topRightHBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="loginPage" mnemonicParsing="false" onAction="#loginButtonPressed" prefHeight="15.0" prefWidth="52.0" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Login" StackPane.alignment="CENTER_RIGHT">
-                           <StackPane.margin>
-                              <Insets right="5.0" />
-                           </StackPane.margin>
-                        </Button>
-                        <Button fx:id="logoutButton" disable="true" mnemonicParsing="false" onAction="#logoutButtonPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Logout" visible="false" StackPane.alignment="CENTER_RIGHT">
-                           <StackPane.margin>
-                              <Insets right="5.0" />
-                           </StackPane.margin>
-                        </Button>
-                     </children>
-                  </StackPane>
-                  <Button id="searchButton" fx:id="searchButton" maxHeight="25.0" minHeight="25.0" mnemonicParsing="false" onAction="#searchButtonPressed" prefHeight="25.0" styleClass="searchButton" stylesheets="@ElementViewStyleSheet.css">
-                     <graphic>
-                        <ImageView fitHeight="17.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" styleClass="transparent">
-                           <image>
-                              <Image url="@searchIcon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets right="-5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <TextField id="searchBar" fx:id="searchBar" maxHeight="25.6" minHeight="25.6" onKeyPressed="#searchShortcut" onKeyTyped="#keyTyped" onMouseClicked="#mouseClicked" prefHeight="25.6" styleClass="searchBar" stylesheets="@ElementViewStyleSheet.css" text="Search">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <padding>
-                        <Insets right="15.0" />
-                     </padding>
-                  </TextField>
-               </children>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </HBox>
-         </children>
-         <padding>
-            <Insets right="5.0" />
-         </padding>
-      </javafx.scene.layout.HBox>
       <Separator prefHeight="84.0" prefWidth="711.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" visible="false" />
-      <HBox alignment="CENTER" prefHeight="39.0" prefWidth="711.0" spacing="10.0">
+      <HBox>
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="355.5" HBox.hgrow="ALWAYS">
+            <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <VBox prefHeight="163.0" prefWidth="219.0">
                <children>
                   <Label text="Username:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="355.5" HBox.hgrow="ALWAYS">
-               <children>
-                  <TextField styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="39.0" prefWidth="711.0" spacing="10.0">
-         <children>
-            <HBox alignment="CENTER_RIGHT" prefWidth="355.5" HBox.hgrow="ALWAYS">
-               <children>
+                  <TextField fx:id="usernameText" styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
                   <Label text="Password:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="355.5" HBox.hgrow="ALWAYS">
-               <children>
-                  <TextField styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="39.0" prefWidth="711.0" spacing="10.0">
-         <children>
-            <HBox alignment="CENTER_RIGHT" prefWidth="355.5" HBox.hgrow="ALWAYS">
-               <children>
+                  <TextField fx:id="passwordText" styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
                   <Label text="Retype Password:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="repasswordText" styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
                </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="355.5" HBox.hgrow="ALWAYS">
-               <children>
-                  <TextField styleClass="textfield" stylesheets="@ElementViewStyleSheet.css" />
-               </children>
-            </HBox>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
+      <Button mnemonicParsing="false" onAction="#createUserPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Create Profile">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+      <Label fx:id="errorText" text="PLACEHOLDER" textFill="#e14721" visible="false" />
    </children>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

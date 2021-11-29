@@ -83,7 +83,7 @@ public class ViewController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         //add header bar
-        rootVBox.getChildren().add(0, new HeaderBar(true));
+        rootVBox.getChildren().add(0, new HeaderBar(HeaderBar.Page.DEFAULT));
         
         //create list for also see section
         ObservableList<Generic> alsoSeeObs = FXCollections.observableArrayList();

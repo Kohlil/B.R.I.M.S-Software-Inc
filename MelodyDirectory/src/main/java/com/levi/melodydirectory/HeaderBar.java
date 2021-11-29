@@ -28,6 +28,12 @@ public class HeaderBar extends HBox {
         LOGGED_IN,
         LOGGED_OUT
     }
+    
+    public static enum Page {
+        LOGINPAGE,
+        HOMEPAGE,
+        DEFAULT
+    }
 
     @FXML
     private Button loginPage = new Button();
@@ -49,11 +55,11 @@ public class HeaderBar extends HBox {
 
     /**
      * 
-     * @param homeButton Whether the bar should contain a home button
+     * @param page where the header bar is
      * 
      * Bar for the top of all pages to standardize methods and searches
      */
-    public HeaderBar(Boolean homeButton) {
+    public HeaderBar(Page page) {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("HeaderBar.fxml"));
         fxmlLoader.setController(this);
@@ -72,7 +78,7 @@ public class HeaderBar extends HBox {
                 loginPage.setVisible(true);
                 loginPage.setDisable(false);
             }
-            if (!homeButton) {
+            if (page == Page.HOMEPAGE) {
                 this.homeButton.setVisible(false);
                 this.homeButton.setDisable(true);
                 faqButton.setVisible(true);
@@ -83,6 +89,12 @@ public class HeaderBar extends HBox {
                 this.homeButton.setDisable(false);
                 faqButton.setVisible(false);
                 faqButton.setDisable(true);
+            }
+            if (page == Page.LOGINPAGE) {
+                loginPage.setVisible(false);
+                loginPage.setDisable(true);
+                logoutButton.setVisible(false);
+                logoutButton.setDisable(true);
             }
         } catch (IOException ex) {
             ex.printStackTrace();

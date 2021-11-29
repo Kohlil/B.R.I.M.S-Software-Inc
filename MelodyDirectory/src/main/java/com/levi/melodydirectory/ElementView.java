@@ -36,9 +36,15 @@ public class ElementView extends StackPane implements Initializable {
 
     @FXML
     private Label released = new Label();
+    
+    @FXML
+    private Label releasedLabel = new Label();
 
     @FXML
     private Label rating = new Label();
+    
+    @FXML
+    private VBox data = new VBox();
 
     /**
      * 
@@ -69,10 +75,14 @@ public class ElementView extends StackPane implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        if (gen.getDataType() != Generic.DataTypes.ARTIST) {
+            released.setText(gen.getReleaseDate());
+        }
+        else {//remove released label since artist don't have one
+            data.getChildren().remove(1);
+        }
         name.setText(gen.getName());
         genre.setText(gen.getGenre());
-        released.setText(gen.getReleaseDate());
-        rating.setText(gen.getName());
     }
     
     /**

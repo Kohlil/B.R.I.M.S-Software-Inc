@@ -12,35 +12,33 @@
    <children>
       <javafx.scene.layout.VBox id="ElementView" fx:id="elementView" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="125.0" prefWidth="125.0" style="-fx-border-radius: 10 10 10 10;" styleClass="ElementView">
          <children>
-            <Label fx:id="name" alignment="CENTER" text="Spiderman into the spiderverse" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="name" alignment="CENTER" text="Sunflower" textAlignment="CENTER" wrapText="true">
                <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
                </padding>
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <HBox alignment="CENTER" spacing="5.0">
-               <children>
-                  <Label text="Genre:" />
-                  <Label fx:id="genre" text="Hip-Hop" wrapText="true" />
-               </children>
+            <VBox fx:id="data" alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="37.0" spacing="5.0">
                <children>
-                  <Label text="Released:" />
-                  <Label fx:id="released" text="23/02/21" wrapText="true" />
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label text="Genre:" />
+                        <Label fx:id="genre" text="Hip-Hop" wrapText="true" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="5.0" stylesheets="@ElementViewStyleSheet.css">
+                     <children>
+                        <Label fx:id="releasedLabel" text="Released:" />
+                        <Label fx:id="released" text="23/02/21" wrapText="true" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="65.0" prefWidth="126.0" spacing="5.0">
-               <children>
-                  <Label text="Rating:" />
-                  <Label fx:id="rating" text="97%" wrapText="true" />
-               </children>
-            </HBox>
+            </VBox>
          </children>
       </javafx.scene.layout.VBox>
       <Button mnemonicParsing="false" onAction="#mouseClicked" opacity="0.0" prefHeight="125.0" prefWidth="125.0" />

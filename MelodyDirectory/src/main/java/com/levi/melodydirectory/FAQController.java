@@ -26,7 +26,7 @@ public class FAQController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        rootVBox.getChildren().add(0, new HeaderBar(true));
+        rootVBox.getChildren().add(0, new HeaderBar(HeaderBar.Page.DEFAULT));
     }
 
 }
