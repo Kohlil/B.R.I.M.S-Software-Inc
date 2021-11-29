@@ -1,4 +1,3 @@
-package com.levi.melodydirectory;
 import java.sql.*;
 
 /**
@@ -133,9 +132,9 @@ public class DBInteractions {
 		conn = DriverManager.getConnection(DB_URL);
 		
 		// The parameters would need to be added through the GUI
-		String query = "spAddSong('" + albumName + "', '" + artistName + "', '" + songName + "', '" + songGenre 
-				+ "', '" + songDesc + "', '" + songLink + "', '" + songReleaseDate + "', " + songPriceF + ", '" + songLength + "', '" 
-				+ albumGenre + "', '" + albumDesc + "', '" + albumLink + "', '" + albumReleaseDate + "', " + albumPriceF + ", '"+ artistGenre + "', '" + artistDesc + "', '" + artistLink + "')";
+		String query = "spAddSong(@albumName = '" + albumName +"',@artistName = '" + artistName + "',@songName = '" + songName + "', @songGenre = '" + songGenre 
+				+ "',@songDesc = '" + songDesc + "',@songLink = '" + songLink + ",@songReleaseDate = '" + songReleaseDate + "',@songPrice = " + songPriceF + ",@songLength = '" + songLength + "',@albumGenre = '" 
+				+ albumGenre + "',@albumDesc = '" + albumDesc + "',@albumLink = '" + albumLink + "',@albumReleaseDate = '" + albumReleaseDate + "',@albumPrice = " + albumPriceF + ",@artistGenre = '"+ artistGenre + "',@artistDesc = '" + artistDesc + "',@artistLink = '" + artistLink + "')";
 		p = conn.prepareStatement(query);
 		p.executeQuery();
 	}
