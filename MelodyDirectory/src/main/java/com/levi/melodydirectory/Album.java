@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Bricen Raynold
  * Album object class
  */
-public class Album extends Generic<Album> {
+public class Album extends Generic {
 
     /*
 	 * Album Class

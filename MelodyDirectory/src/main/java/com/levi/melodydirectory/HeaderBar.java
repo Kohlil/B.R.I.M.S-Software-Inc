@@ -26,14 +26,17 @@ public class HeaderBar extends HBox {
     //Defines whether a user is logged in or logged out
     public static enum Status {
         LOGGED_IN,
-        LOGGED_OUT
+        LOGGED_OUT,
     }
     
     public static enum Page {
         LOGINPAGE,
         HOMEPAGE,
+        ADDSONG,
         DEFAULT
     }
+    
+    public static boolean isAdmin = false;
 
     @FXML
     private Button loginPage = new Button();
@@ -52,6 +55,13 @@ public class HeaderBar extends HBox {
 
     @FXML
     private Button searchButton = new Button();
+    
+    @FXML
+    private Button addButton = new Button();
+    
+    @FXML
+    private Button requestsButton = new Button();
+
 
     /**
      * 
@@ -77,6 +87,8 @@ public class HeaderBar extends HBox {
                 logoutButton.setDisable(true);
                 loginPage.setVisible(true);
                 loginPage.setDisable(false);
+                addButton.setVisible(false);
+                addButton.setDisable(true);
             }
             if (page == Page.HOMEPAGE) {
                 this.homeButton.setVisible(false);
@@ -95,6 +107,17 @@ public class HeaderBar extends HBox {
                 loginPage.setDisable(true);
                 logoutButton.setVisible(false);
                 logoutButton.setDisable(true);
+            }
+            if (page == Page.ADDSONG) {
+                addButton.setVisible(false);
+                addButton.setDisable(true);
+            }
+            if (!isAdmin && !App.isRequest) {
+                requestsButton.setVisible(false);
+                requestsButton.setDisable(true);
+            } else {
+                requestsButton.setVisible(true);
+                requestsButton.setDisable(false);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -174,10 +197,13 @@ public class HeaderBar extends HBox {
     @FXML
     void logoutButtonPressed(ActionEvent event) throws IOException {
         App.STATUS = HeaderBar.Status.LOGGED_OUT;
+        isAdmin = false;
         logoutButton.setVisible(false);
         logoutButton.setDisable(true);
         loginPage.setVisible(true);
         loginPage.setDisable(false);
+        App.isRequest = false;
+        
     }
 
     /**
@@ -200,5 +226,29 @@ public class HeaderBar extends HBox {
     @FXML
     void faqButtonPressed(ActionEvent event) throws IOException {
         App.setRoot("FAQ");
+    }
+    
+    /**
+     * 
+     * @param event 
+     * 
+     * add button was pressed, loads AddSong page
+     */
+    @FXML
+    void addButtonPressed(ActionEvent event) throws IOException {
+        App.setRoot("AddSong");
+    }
+    
+    /**
+     * 
+     * @param event 
+     * 
+     * loads requests page
+     */
+    @FXML
+    void RequestsButtonPressed(ActionEvent event) throws IOException {
+        App.isRequest = true;
+        App.setData("12345test");//really bad way of having a special string that loads all requests
+        App.setRoot("SearchResults");//instead of performing search
     }
 }

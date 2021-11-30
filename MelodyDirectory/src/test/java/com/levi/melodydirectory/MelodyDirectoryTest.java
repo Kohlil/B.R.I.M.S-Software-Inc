@@ -35,19 +35,6 @@ class MelodyDirectoryTest {
 
 	//}
 	
-	// black
-	@Test
-	void test_isUserCommentMod() {
-		User comMod = new User("DanTDM", "robloxsux");
-		assertFalse(comMod.isCommentMod());
-	}
-	
-	// black
-	@Test
-	void test_isUserAdministrator() {
-		User comMod = new User("DanTDM", "robloxsux");
-		assertFalse(comMod.isSysAdmin());
-		}
 	
 	// black
 	@Test

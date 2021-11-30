@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author Bricen Raynold
  * Artist object class
  */
-public class Artist extends Generic<Artist> {
+public class Artist extends Generic {
 	/*
 	 * Artist Class
 	 * (Everything in the Generic) with;

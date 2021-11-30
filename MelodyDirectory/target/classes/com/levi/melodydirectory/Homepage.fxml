@@ -5,26 +5,26 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="rootVBox" prefHeight="420.0" prefWidth="720.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.HomePageController">
+<VBox fx:id="root" maxHeight="420.0" maxWidth="720.0" prefHeight="420.0" prefWidth="720.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.HomePageController">
    <children>
-      <VBox prefHeight="200.0" prefWidth="100.0">
+      <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label stylesheets="@ElementViewStyleSheet.css" text="Top Rated">
+            <Label stylesheets="@ElementViewStyleSheet.css" text="Discover" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets left="1.0" />
                </VBox.margin>
             </Label>
-            <ListView fx:id="topRatedSlider" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" styleClass="listview" stylesheets="@ElementViewStyleSheet.css" />
-         </children>
-      </VBox>
-      <VBox prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <Label text="Recently Added">
-               <VBox.margin>
-                  <Insets left="1.0" />
-               </VBox.margin>
-            </Label>
-            <ListView fx:id="recentlyAddedSlider" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" styleClass="listview" stylesheets="@ElementViewStyleSheet.css" />
+            <ListView fx:id="topRatedSlider" orientation="HORIZONTAL" prefHeight="215.0" prefWidth="711.0" styleClass="listview" stylesheets="@ElementViewStyleSheet.css" VBox.vgrow="ALWAYS" />
+            <VBox prefHeight="232.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label text="Pop" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="1.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView fx:id="recentlyAddedSlider" orientation="HORIZONTAL" prefWidth="720.0" styleClass="listview" stylesheets="@ElementViewStyleSheet.css" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
          </children>
       </VBox>
    </children>

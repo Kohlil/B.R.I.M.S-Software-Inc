@@ -2,7 +2,10 @@ package com.levi.melodydirectory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,24 +38,27 @@ public class CreateUserController implements Initializable {
      */
     @FXML
     void createUserPressed(ActionEvent event) throws IOException {
-        //checkDupUsername(usernameText.getText());
-
-        if (true) {//Does this username already exist in DataBase?
-            if (passwordText.getText().equals(repasswordText.getText())) {//Do passwords match?
-                //success
-                System.out.println("Username: " + usernameText.getText());
-                System.out.println("Password: " + passwordText.getText());
-                
-                //set login status of application and return to homepage
-                App.STATUS = HeaderBar.Status.LOGGED_IN;
-                App.setRoot("Homepage");
+        try {
+            //checkDupUsername(usernameText.getText());
+            DBreturn db = DBreturn.getInstance();
+            if (!db.searchUser(usernameText.getText())) {//Does this username already exist in DataBase?
+                if (passwordText.getText().equals(repasswordText.getText())) {//Do passwords match?
+                    //success
+                    db.createUser(usernameText.getText(), passwordText.getText());
+                    
+                    //set login status of application and return to homepage
+                    App.STATUS = HeaderBar.Status.LOGGED_IN;
+                    App.setRoot("Homepage");
+                } else {
+                    errorText.setText("Passwords Must Be Identical");
+                    errorText.setVisible(true);
+                }
             } else {
-                errorText.setText("Passwords Must Be Identical");
+                errorText.setText("Username Is Already Taken");
                 errorText.setVisible(true);
             }
-        } else {
-            errorText.setText("Username Is Already Taken");
-            errorText.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

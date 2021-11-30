@@ -4,7 +4,7 @@ package com.levi.melodydirectory;
  * @author Bricen Raynold
  * Song object class
  */
-public class Song extends Generic<Song> {
+public class Song extends Generic {
 	/*
 	 * Song Class
 	 * (Everything in the Generic) with;

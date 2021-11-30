@@ -11,7 +11,7 @@
 
 <fx:root alignment="CENTER" maxHeight="0.0" prefHeight="20.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER_LEFT" maxHeight="25.6" prefWidth="200.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" HBox.hgrow="ALWAYS">
+      <HBox fx:id="test" alignment="CENTER_LEFT" maxHeight="25.6" prefWidth="200.0" spacing="5.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" HBox.hgrow="ALWAYS">
          <children>
             <StackPane>
                <children>
@@ -19,6 +19,8 @@
                   <Button fx:id="faqButton" mnemonicParsing="false" onAction="#faqButtonPressed" prefHeight="26.0" prefWidth="46.0" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="FAQ" />
                </children>
             </StackPane>
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButtonPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Add" />
+            <Button fx:id="requestsButton" mnemonicParsing="false" onAction="#RequestsButtonPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Requests" />
          </children>
       </HBox>
       <HBox fx:id="topRightHBox" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">

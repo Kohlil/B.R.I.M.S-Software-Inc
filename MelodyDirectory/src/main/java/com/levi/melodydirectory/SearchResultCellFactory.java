@@ -28,7 +28,7 @@ public class SearchResultCellFactory implements Callback<ListView<Generic>, List
                     setGraphic(new SearchResultView(gen, DataTypes.SONG)); 
                 } 
                 else {//populate list with empty cells
-                    setText("null");
+                    setText(null);
                     setGraphic(null);
                 }
                 this.setEditable(false);

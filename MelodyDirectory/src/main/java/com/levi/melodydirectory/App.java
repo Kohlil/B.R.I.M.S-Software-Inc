@@ -11,7 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.Stack;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.stream.Collectors;
 import javafx.scene.image.Image;
 
 public class App extends Application {
@@ -19,7 +22,9 @@ public class App extends Application {
     private static Scene scene;
 
     public static HeaderBar.Status STATUS;
-    private static Stack stack;
+    public static Boolean isRequest = false;
+    private static HashSet<Generic> discover = new HashSet<>();
+    private static HashSet<Generic> pop = new HashSet<>();
 
     /**
      *
@@ -30,8 +35,23 @@ public class App extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
+        
+        try {
+            //preload homepage results so that they only have to be loaded once
+            DBreturn db = DBreturn.getInstance();
+            
+            discover.add(db.Search("Pop").get(0));
+            discover.add(db.Search("Hip-hop").get(0));
+            discover.add(db.Search("Punk").get(0));
+            discover.add(db.Search("Rap").get(0));
+            discover.add(db.Search("Alternative").get(0));
+            pop.addAll(db.Search("Pop").subList(1, 8));
+            discover.addAll(db.Search("Pop").subList(1, 8));
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.exit(1);
+        }
         STATUS = HeaderBar.Status.LOGGED_OUT;
-        stack = new Stack();
         scene = new Scene(loadFXML("Homepage"), 720, 420);
         stage.setScene(scene);
 
@@ -82,6 +102,30 @@ public class App extends Application {
     public static Object getData() {
         return scene.getUserData();
     }
+
+    /**
+     * 
+     * @return 
+     * 
+     * get discover elements, loads list one time so that this list doesn't have to be created
+     * each time the homepage is loaded
+     */
+    public static ArrayList<Generic> getDiscover() {
+        return (ArrayList<Generic>) (discover.stream().collect(Collectors.toList()));
+    }
+
+    /**
+     * 
+     * @return 
+     * 
+     * get pop elements, loads list one time so that this list doesn't have to be created
+     * each time the homepage is loaded
+     */
+    public static ArrayList<Generic> getPop() {
+        return (ArrayList<Generic>) (pop.stream().collect(Collectors.toList()));
+    }
+    
+    
 
     /**
      *

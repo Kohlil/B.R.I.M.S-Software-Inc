@@ -50,6 +50,8 @@ Color Palette(Darkest to Brightest):
 /*Styling for specific objects by custom ID*/
 .transparent {
 	-fx-background-color:rgba(0,0,0,0);
+	-fx-border-color: rgba(0,0,0,0);
+
 }
 
 .searchButton {

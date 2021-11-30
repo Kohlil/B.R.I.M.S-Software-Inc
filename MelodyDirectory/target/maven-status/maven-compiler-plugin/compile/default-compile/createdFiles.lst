@@ -1,16 +1,17 @@
-com\levi\melodydirectory\DBInteractions.class
+com\levi\melodydirectory\AddSongController$AutoFillView.class
+com\levi\melodydirectory\AddSongController$AutoFillCellFactory.class
 com\levi\melodydirectory\HeaderBar$Page.class
 com\levi\melodydirectory\CreateUserController.class
 com\levi\melodydirectory\SearchResultCellFactory.class
 com\levi\melodydirectory\ElementCellFactory$1.class
 com\levi\melodydirectory\SearchController.class
+com\levi\melodydirectory\AddSongController.class
 com\levi\melodydirectory\HeaderBar.class
 com\levi\melodydirectory\Start.class
 com\levi\melodydirectory\LoginController.class
 com\levi\melodydirectory\ViewController$1.class
 module-info.class
 com\levi\melodydirectory\SearchResultView.class
-com\levi\melodydirectory\User.class
 com\levi\melodydirectory\DBreturn.class
 com\levi\melodydirectory\Generic.class
 com\levi\melodydirectory\Song.class
@@ -21,6 +22,7 @@ com\levi\melodydirectory\ViewController.class
 com\levi\melodydirectory\SearchResultCellFactory$1.class
 com\levi\melodydirectory\HeaderBar$Status.class
 com\levi\melodydirectory\App.class
+com\levi\melodydirectory\AddSongController$AutoFillCellFactory$1.class
 com\levi\melodydirectory\Generic$DataTypes.class
 com\levi\melodydirectory\ElementCellFactory.class
 com\levi\melodydirectory\FAQController.class

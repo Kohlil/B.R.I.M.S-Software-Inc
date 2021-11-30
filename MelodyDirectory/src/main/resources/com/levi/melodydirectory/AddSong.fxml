@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<ScrollPane hbarPolicy="NEVER" maxHeight="420.0" maxWidth="720.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.levi.melodydirectory.AddSongController">
+   <content>
+      <VBox fx:id="rootVBox" maxHeight="420.0" maxWidth="720.0" prefHeight="411.0" prefWidth="720.0" spacing="5.0" styleClass="vbox" stylesheets="@ElementViewStyleSheet.css">
+         <children>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="420.0" prefWidth="720.0" spacing="5.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" text="Song Information">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <HBox maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="5.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css">
+                     <children>
+                        <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0" spacing="5.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0" stylesheets="@ElementViewStyleSheet.css">
+                                 <children>
+                                    <Label text="Name:">
+                                       <HBox.margin>
+                                          <Insets right="16.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="songName" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                 <children>
+                                    <Label text="Genre:">
+                                       <HBox.margin>
+                                          <Insets right="16.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="songGenre" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                 <children>
+                                    <Label text="Length:">
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="songLength" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                 <children>
+                                    <Label text="Released:" />
+                                    <TextField fx:id="songReleased" prefHeight="26.0" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="songDescription" minHeight="50.0" prefHeight="118.0" prefWidth="711.0" promptText="Description" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" wrapText="true">
+                     <VBox.margin>
+                        <Insets right="14.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="711.0" spacing="5.0">
+                     <children>
+                        <Label text="Third Party Link" />
+                        <TextField fx:id="songLink" prefHeight="26.0" prefWidth="326.0" />
+                        <Label contentDisplay="CENTER" text="Price:" />
+                        <TextField fx:id="songPrice" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label text="Album Information">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView fx:id="albumAutofill" minHeight="65.0" onKeyTyped="#albumKeyTyped" orientation="HORIZONTAL" prefHeight="57.0" prefWidth="720.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css">
+                     <VBox.margin>
+                        <Insets right="14.0" />
+                     </VBox.margin>
+                  </ListView>
+                  <HBox maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                 <children>
+                                    <Label text="Name:">
+                                       <HBox.margin>
+                                          <Insets right="16.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="albumName" onKeyTyped="#albumKeyTyped" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                 <children>
+                                    <Label text="Released:" />
+                                    <TextField fx:id="albumReleased" prefHeight="26.0" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="albumDescription" minHeight="50.0" prefHeight="118.0" prefWidth="711.0" promptText="Description" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" wrapText="true">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets right="14.0" />
+                     </padding>
+                  </TextArea>
+                  <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="711.0" spacing="5.0">
+                     <children>
+                        <Label text="Third Party Link" />
+                        <TextField fx:id="albumLink" prefHeight="26.0" prefWidth="326.0" />
+                        <Label contentDisplay="CENTER" text="Price:" />
+                        <TextField fx:id="albumPrice" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+               <children>
+                  <Label text="Artist Information">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="artistAutofill" minHeight="65.0" orientation="HORIZONTAL" prefHeight="57.0" prefWidth="720.0" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css">
+                     <VBox.margin>
+                        <Insets right="14.0" />
+                     </VBox.margin>
+                  </ListView>
+                  <HBox maxHeight="-Infinity" prefHeight="45.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <VBox fillWidth="false" maxHeight="-Infinity" prefHeight="35.0" prefWidth="128.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                 <children>
+                                    <Label text="Name:">
+                                       <HBox.margin>
+                                          <Insets right="16.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField fx:id="artistName" onKeyTyped="#artistKeyTyped" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="artistDescription" minHeight="50.0" prefHeight="118.0" prefWidth="711.0" promptText="Description" styleClass="transparent" stylesheets="@ElementViewStyleSheet.css" wrapText="true">
+                     <VBox.margin>
+                        <Insets right="14.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <HBox alignment="CENTER_LEFT" prefHeight="54.0" prefWidth="711.0" spacing="5.0">
+                     <children>
+                        <Label text="Third Party Link" />
+                        <TextField fx:id="artistLink" prefHeight="26.0" prefWidth="326.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#sendRequestPressed" styleClass="buttonMain" stylesheets="@ElementViewStyleSheet.css" text="Send Request" />
+         </children>
+      </VBox>
+   </content>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</ScrollPane>
