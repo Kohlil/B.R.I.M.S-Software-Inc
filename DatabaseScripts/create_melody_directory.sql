@@ -71,7 +71,7 @@ GO
 CREATE FUNCTION dbo.search(@search VARCHAR(1024))
 RETURNS TABLE
 RETURN
-	SELECT	s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
+	SELECT	DISTINCT(s.songName), s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
 			al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice, 
 			a.artistName, a.artistGenre, a.artistDesc, a.artistLink
 	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
@@ -318,4 +318,7 @@ SELECT * FROM dbo.search('test')
 GO
 
 SELECT * FROM dbo.search('FLOOR 13')
+GO
+
+SELECT * FROM dbo.search('pop')
 GO
