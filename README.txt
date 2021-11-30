@@ -14,7 +14,7 @@ File Manifest (a list of files in the directory or archive)
   - Album.java
   - Artist.java
   - App.java
-  - DBReturn.java
+  - DBreturn.java
   - ElementCellFactory.java
   - ElementView.java
   - Generic.java
