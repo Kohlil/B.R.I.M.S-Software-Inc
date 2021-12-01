@@ -5,6 +5,10 @@ import java.sql.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author Bricen Raynold & Isaiah Kohl
+ * DB interactions class, containing all of our methods for calling database functions
+ */
 public class DBreturn {
 
     private static final DBreturn instance = new DBreturn();
