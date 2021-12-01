@@ -10,6 +10,9 @@ Installation Instructions
 Operating Instructions
 * Operating through the Melody Directory should be seamless as it provides user functionality, but if any doubts kindly refer to our directory's FAQ page. 
 
+Deliverables
+* Contains the diagrams, instructions for setting up the database, and the Team & Goals Descriptions
+
 File Manifest (a list of files in the directory or archive)
   - AddSongController.java
   - Album.java
