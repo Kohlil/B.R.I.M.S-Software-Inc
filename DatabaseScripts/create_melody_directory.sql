@@ -2,6 +2,13 @@
 GO
 
 /****** Object:  Database MelodyDirectory     ******/
+IF DB_ID('MelodyDirectoryRequests') IS NOT NULL
+	DROP DATABASE MelodyDirectoryRequests
+GO
+
+CREATE DATABASE MelodyDirectoryRequests
+GO 
+
 IF DB_ID('MelodyDirectory') IS NOT NULL
 	DROP DATABASE MelodyDirectory
 GO
@@ -71,7 +78,7 @@ GO
 CREATE FUNCTION dbo.search(@search VARCHAR(1024))
 RETURNS TABLE
 RETURN
-	SELECT	DISTINCT(s.songName), s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
+	SELECT	DISTINCT s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
 			al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice, 
 			a.artistName, a.artistGenre, a.artistDesc, a.artistLink
 	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
@@ -85,6 +92,42 @@ RETURN
 			s.songLink = @search OR
 			al.albumLink = @search OR
 			a.artistLink = @search
+GO
+
+CREATE FUNCTION dbo.getSong(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	s.songName = @search
+GO
+
+CREATE FUNCTION dbo.getAlbum(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	 al.albumName = @search
+GO
+
+CREATE FUNCTION dbo.getArtist(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT a.artistName, a.artistGenre, a.artistDesc, a.artistLink
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	a.artistName  = @search
+GO
+
+CREATE FUNCTION dbo.getAllSongs()
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, al.albumName,
+			a.artistName
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
 GO
 
 
@@ -237,18 +280,195 @@ INSERT Profiles(userId, pass, adminAccess) VALUES
 ('Isaiah',	'group17', 1)
 GO
 
-/*
-SELECT * FROM Profiles
-SELECT * FROM Songs
-SELECT * FROM Albums
-SELECT * FROM Artists
+EXEC spAddProfile
+	@username		=	'Shane',
+	@pass			=	'test password',
+	@adminAccess	=	0
 GO
-*/
 
-SELECT * FROM Profiles
-SELECT * FROM Songs
-SELECT * FROM Albums
-SELECT * FROM Artists
+SELECT * FROM dbo.getAlbum('Hotel Diablo')
+
+USE MelodyDirectoryRequests
+GO
+
+/****** Object:  Table Profiles  ******/   
+CREATE TABLE Profiles(
+	userId		VARCHAR(32)			NOT NULL,
+	pass		VARCHAR(32)			NOT NULL,
+	adminAccess	BIT					NOT NULL
+)
+GO
+
+/****** Object:  Table Songs  ******/
+CREATE TABLE Songs(
+	songId				INT				IDENTITY(1,1)	NOT NULL,
+	albumId				INT				NOT NULL,
+	artistId			INT				NOT NULL,
+	songName			VARCHAR(64)		NOT NULL,
+	songGenre			VARCHAR(64)		,
+	songDesc			VARCHAR(1024)	,
+	songLink			VARCHAR(128)	,
+	songReleaseDate		VARCHAR(16)		,
+	songPrice			FLOAT			,
+	songLength			VARCHAR(16)		,
+	CONSTRAINT PK_Songs PRIMARY KEY CLUSTERED (
+		songId ASC
+	)
+)
+GO
+
+/****** Object:  Table Albums  ******/
+CREATE TABLE Albums(
+	albumId				INT				IDENTITY(1,1)	NOT NULL,
+	artistId			INT				NOT NULL,
+	albumName			VARCHAR(64)		NOT NULL,
+	albumGenre			VARCHAR(64)		,
+	albumDesc			VARCHAR(1200)	,
+	albumLink			VARCHAR(128)	,
+	albumReleaseDate	VARCHAR(16)		,
+	albumPrice			FLOAT			
+	CONSTRAINT PK_Albums PRIMARY KEY CLUSTERED (
+		albumId ASC
+	)
+)
+GO
+
+/****** Object:  Table Artist  ******/
+CREATE TABLE Artists(
+	artistId			INT				IDENTITY(1,1)	NOT NULL,
+	artistName			VARCHAR(64)		NOT NULL,
+	artistGenre			VARCHAR(64)		,
+	artistDesc			VARCHAR(1200)	,
+	artistLink			VARCHAR(128)	,
+	CONSTRAINT PK_Artists PRIMARY KEY CLUSTERED (
+		artistId ASC
+	)
+)
+GO
+
+/* Functions */
+CREATE FUNCTION dbo.search(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, 
+			al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice, 
+			a.artistName, a.artistGenre, a.artistDesc, a.artistLink
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	s.songName LIKE ('%' + @search + '%') OR
+			s.songGenre LIKE ('%' + @search + '%') OR
+			al.albumName LIKE ('%' + @search + '%') OR
+			al.albumGenre LIKE ('%' + @search + '%') OR
+			a.artistName LIKE ('%' + @search + '%') OR
+			a.artistGenre LIKE ('%' + @search + '%') OR
+			s.songLink = @search OR
+			al.albumLink = @search OR
+			a.artistLink = @search
+GO
+
+CREATE FUNCTION dbo.getSong(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	s.songName = @search
+GO
+
+CREATE FUNCTION dbo.getAlbum(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT al.albumName, al.albumGenre, al.albumDesc, al.albumLink, al.albumReleaseDate, al.albumPrice
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	 al.albumName LIKE ('%' + @search + '%')
+GO
+
+CREATE FUNCTION dbo.getArtist(@search VARCHAR(1024))
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT a.artistName, a.artistGenre, a.artistDesc, a.artistLink
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+	WHERE	a.artistName LIKE ('%' + @search + '%')
+GO
+
+CREATE FUNCTION dbo.getAllSongs()
+RETURNS TABLE
+RETURN
+	SELECT	DISTINCT s.songName, s.songGenre, s.songDesc, s.songLink, s.songReleaseDate, s.songPrice, s.songLength, al.albumName,
+			a.artistName
+	FROM Songs s	JOIN Albums al ON s.albumId = al.albumId
+					JOIN Artists a ON al.artistId = a.artistId
+GO
+
+
+CREATE PROC spAddSong
+	@albumName			VARCHAR(64),
+	@artistName			VARCHAR(64),
+	@songName			VARCHAR(64), 
+	@songGenre			VARCHAR(64),
+	@songDesc			VARCHAR(1200),
+	@songLink			VARCHAR(128),
+	@songReleaseDate	VARCHAR(16),
+	@songPrice			FLOAT,	
+	@songLength			VARCHAR(16),
+
+	@albumGenre			VARCHAR(64),
+	@albumDesc			VARCHAR(1200),
+	@albumLink			VARCHAR(128),
+	@albumReleaseDate	VARCHAR(16),
+	@albumPrice			FLOAT,
+
+	@artistGenre		VARCHAR(64),
+	@artistDesc			VARCHAR(1200),
+	@artistLink			VARCHAR(128)
+AS BEGIN SET NOCOUNT ON
+	DECLARE @albumId INT, @artistId INT, @songId INT
+
+	/* Checks if the song exists in the song table, if id already exists, then return, the add is not necessary */
+	SELECT @songId = ISNULL(songId,-1) FROM Songs WHERE songName = @songName
+	IF(@songId > 0) RETURN;
+
+	SELECT @albumId = ISNULL(albumId,-1) FROM Albums WHERE albumName = @albumName
+	SELECT @artistId = ISNULL(artistId,-1) FROM Artists WHERE artistName = @artistName
+
+	/* Checks if the artist exists in the artist table, if not creates a new entry */
+	IF(@artistId IS NULL) BEGIN
+		INSERT INTO Artists(artistName, artistGenre, artistDesc, artistLink) VALUES (@artistName, @artistGenre, @artistDesc, @artistLink)
+		SET @artistId = @@IDENTITY
+	END
+
+	/* Checks if the albums exists in the albums table, if not creates a new entry */
+	IF(@albumId IS NULL) BEGIN
+		INSERT INTO Albums (artistId, albumName, albumGenre, albumDesc, albumLink, albumReleaseDate, albumPrice) VALUES (@artistId, @albumName, @albumGenre, @albumDesc, @albumLink, @albumReleaseDate, @albumPrice)
+		SET @albumId = @@IDENTITY
+	END
+	
+	/* At this point, new entires for artist and albums have been created if necessary , meaning we can now safely insert a new song */
+	INSERT INTO Songs (albumId, artistId, songName, songGenre, songDesc, songLink, songReleaseDate, songPrice, songLength) VALUES (@albumId, @artistId, @songName, @songGenre, @songDesc, @songLink, @songReleaseDate, @songPrice, @songLength)
+
+	
+END
+GO
+
+CREATE PROC spAddProfile
+	@username		VARCHAR(32),
+	@pass			VARCHAR(32),
+	@adminAccess	BIT
+AS BEGIN SET NOCOUNT ON
+	DECLARE @userId VARCHAR(32)
+
+	/* Checks if the song exists in the song table, if id already exists, then return, the add is not necessary */
+	SELECT @userId = ISNULL(userId, NULL) FROM Profiles WHERE userId = @username
+	IF(@userId IS NOT NULL) BEGIN
+		RETURN;
+	END
+	
+	/* At this point, new entires for artist and albums have been created if necessary , meaning we can now safely insert a new song */
+	INSERT INTO Profiles (userId, pass, adminAccess) VALUES (@username, @pass, @adminAccess)
+	
+END
 GO
 
 EXEC spAddSong
@@ -273,52 +493,6 @@ EXEC spAddSong
 	@artistLink			= 'https://music.youtube.com/channel/UCDbLC4CaZzi4jt5KyAF0ZQw'
 GO
 
-EXEC spAddSong
-	@albumName			= 'test album',
-	@artistName			= 'test artist',
-	@songName			= 'test song', 
-	@songGenre			= 'test genre',
-	@songDesc			= 'test description',
-	@songLink			= 'test link',
-	@songReleaseDate	= '11/15/2021',
-	@songPrice			= 999.99,
-	@songLength			= '9:99',
 
-	@albumGenre			= 'Rap',
-	@albumDesc			= 'test album description',
-	@albumLink			= 'test album link',
-	@albumReleaseDate	= '7/5/2019',
-	@albumPrice			= 9.99,
-	
-	@artistGenre		= 'test artist genre',
-	@artistDesc			= 'test artist description',
-	@artistLink			= 'test artist link'
-GO
-
-EXEC spAddProfile
-	@username		=	'test user',
-	@pass			=	'test password',
-	@adminAccess	=	1
-GO
-
-EXEC spAddProfile
-	@username		=	'Shane',
-	@pass			=	'test password',
-	@adminAccess	=	0
-GO
-
-
-SELECT * FROM Profiles
-SELECT * FROM Songs
-SELECT * FROM Albums
-SELECT * FROM Artists
-GO
-
-SELECT * FROM dbo.search('test')
-GO
-
-SELECT * FROM dbo.search('FLOOR 13')
-GO
-
-SELECT * FROM dbo.search('pop')
-GO
+USE MelodyDirectoryRequests
+SELECT * FROM dbo.getAlbum('Hotel Diablo')
