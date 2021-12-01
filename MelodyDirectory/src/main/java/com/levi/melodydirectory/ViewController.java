@@ -11,11 +11,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +24,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -37,6 +33,7 @@ import javafx.scene.layout.VBox;
  */
 public class ViewController implements Initializable {
 
+    //FXML fields
     @FXML
     private VBox rootVBox = new VBox();
 
@@ -136,7 +133,7 @@ public class ViewController implements Initializable {
         descriptionTextArea.setText(gen.getDescription());
         released.setText(gen.getReleaseDate());
         DBreturn db = null;
-        HashSet<Generic> alsoSee = new HashSet<>();
+        HashSet<Generic> alsoSee = new HashSet<>();//hash to prevent dup elements in alsoSee
         try {
             db = DBreturn.getInstance();
             url = new URL(gen.geteLink());//attempt to create a link
@@ -155,7 +152,7 @@ public class ViewController implements Initializable {
                 released.setVisible(false);
                 album.setVisible(false);
                 albumLabel.setVisible(false);
-                try {
+                try {//load results for AlsoSee section
                     alsoSee.addAll(db.Search(tempArtist.getName()));
                     alsoSee.addAll(db.Search(tempArtist.getGenre()));
                     alsoSee.remove(tempArtist);
@@ -173,7 +170,7 @@ public class ViewController implements Initializable {
                 price.setText(tempAlbum.getPrice());
                 lengthLabel.setVisible(false);
                 length.setVisible(false);
-                try {
+                try {//load results for AlsoSee section
                     alsoSee.addAll(db.Search(tempAlbum.getName()));
                     alsoSee.addAll(db.Search(tempAlbum.getGenre()));
                     alsoSee.remove(tempAlbum);
@@ -188,7 +185,7 @@ public class ViewController implements Initializable {
                 price.setText(tempSong.getPrice());
                 length.setText(tempSong.getSongLength());
                 album.setText(tempSong.getAlbum());
-                try {
+                try {//load results for AlsoSee section
                     alsoSee.addAll(db.Search(tempSong.getName()));
                     alsoSee.addAll(db.Search(tempSong.getGenre()));
                     alsoSee.remove(tempSong);
@@ -208,7 +205,13 @@ public class ViewController implements Initializable {
         alsoSeeSlider.getItems().addAll(alsoSee);//add all items to visible slider
     }
 
-    //launches web browser to 3rd party link
+    /**
+     * 
+     * @param event
+     * @throws IOException 
+     * 
+     * Launches web browser to 3rd party link, only works for windows ten users
+     */
     @FXML
     void linkPressed(ActionEvent event) throws IOException {
         try {
@@ -227,12 +230,12 @@ public class ViewController implements Initializable {
      */
     @FXML
     void approveButtonPressed(ActionEvent event) throws IOException, SQLException {
-        DBreturn db = DBreturn.getInstance();
+        DBreturn db = DBreturn.getInstance();//get db access
         Song s = (Song)gen;
-        db.setRequests(true);
-        Album al = db.getSpecificAlbum(s.getAlbum());
-        Artist ar = db.getSpecificArtist(s.getArtist());
-        db.setRequests(false);
+        db.setRequests(true);//set db to requests mode
+        Album al = db.getSpecificAlbum(s.getAlbum());//does not work
+        Artist ar = db.getSpecificArtist(s.getArtist());//does not work
+        db.setRequests(false);//set db back to normal approved mode
         db.addSong(al.getName(), ar.getName(), s.getName(), s.getGenre(), s.getDescription(), 
                 s.geteLink(), s.getReleaseDate(), s.getPrice(), s.getSongLength(), 
                 al.getName(), al.getDescription(), al.geteLink(), al.getReleaseDate(), 
@@ -246,7 +249,7 @@ public class ViewController implements Initializable {
      * 
      * @param event 
      * 
-     * deletes request from db
+     * deletes request from db and load search requests again
      */
     @FXML
     void denyButtonPressed(ActionEvent event) throws SQLException, IOException {

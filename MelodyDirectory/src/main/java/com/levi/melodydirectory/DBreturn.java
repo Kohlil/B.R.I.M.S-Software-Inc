@@ -1,3 +1,9 @@
+/**
+ * Author: Isaiah Kohl & Bricen
+ * Date: 11/29/21
+ * Purpose: Interaction with DB through singleton class
+ */
+
 package com.levi.melodydirectory;
 
 import java.io.IOException;
@@ -11,7 +17,15 @@ import java.util.stream.Collectors;
  */
 public class DBreturn {
 
-    private static final DBreturn instance = new DBreturn();
+    private static final DBreturn instance = new DBreturn();//one instantiation of class
+    
+    /***********************************************************************************************
+     * 
+     * 
+     *                  EDIT THE TWO STRINGS BELOW TO ALLOW LOCAL DB ACCESS
+     * 
+     * 
+     ***********************************************************************************************/
     private final String DB_URL = "jdbc:sqlserver://MY-TURING-POINT\\SQLEXPRESS;databaseName=MelodyDirectory;user=sa;password=test;prepareSQL=1;sendStringParametersAsUnicode=false";
     private final String DB2_URL = "jdbc:sqlserver://MY-TURING-POINT\\SQLEXPRESS;databaseName=MelodyDirectoryRequests;user=sa;password=test;prepareSQL=1;sendStringParametersAsUnicode=false";
     private Connection conn1 = null;//for songs
@@ -34,19 +48,34 @@ public class DBreturn {
         }
     }
 
+    /**
+     * 
+     * @return 
+     * 
+     * Allow public access of class
+     */
     public static DBreturn getInstance() {
         return instance;
     }
 
+    //for testing main method
     public static void main(String[] args) throws IOException, SQLException {
         DBreturn db = DBreturn.getInstance();
         System.out.println(db.Search("test"));
     }
 
+    /**
+     * 
+     * @param item
+     * @return
+     * @throws SQLException 
+     * 
+     * Searches DB for a specific song
+     */
     public Song getSpecificSong(String item) throws SQLException {
         PreparedStatement p = null;
         ResultSet rs = null;
-        String query = "SELECT * FROM dbo.getSong('" + item + "')";
+        String query = "SELECT * FROM dbo.getSong('" + item + "')";//create query
         if (requests) {
             p = conn3.prepareStatement(query);
         } else {
@@ -66,10 +95,21 @@ public class DBreturn {
         return new Song(sName, sDesc, sGenre, sReleaseDate, sELink, sAlbum, sPrice, sLength, sAName);
     }
 
+    /**
+     * 
+     * @param item
+     * @return
+     * @throws SQLException 
+     * 
+     * Search DB for specific Album, currently does not work which prevents
+     * the approval of requests, not sure why as the query created here works
+     * perfectly fine in actual DB, for proof this query can be found at the
+     * very bottom of the DB script
+     */
     public Album getSpecificAlbum(String item) throws SQLException {
         PreparedStatement p = null;
         ResultSet rs = null;
-        String query = "SELECT * FROM dbo.getAlbum('" + item + "')";
+        String query = "SELECT * FROM dbo.getAlbum('" + item + "')";//create query
         if (requests) {
             p = conn3.prepareStatement(query);
         } else {
@@ -103,10 +143,18 @@ public class DBreturn {
         return new Album(aName, aDesc, aGenre, aReleaseDate, aLink, sAName, aSongs, aPrice);
     }
 
+    /**
+     * 
+     * @param item
+     * @return
+     * @throws SQLException 
+     * 
+     * Not sure if this works as it does essentially the same thing as the function above
+     */
     public Artist getSpecificArtist(String item) throws SQLException {
         PreparedStatement p = null;
         ResultSet rs = null;
-        String query = "SELECT * FROM dbo.getArtist('" + item + "')";
+        String query = "SELECT * FROM dbo.getArtist('" + item + "')";//create query
         if (requests) {
             p = conn3.prepareStatement(query);
         } else {
@@ -194,11 +242,19 @@ public class DBreturn {
         return (ArrayList<Generic>) (list.stream().collect(Collectors.toList()));
     }
 
+    /**
+     * 
+     * @param dbsearcher
+     * @return
+     * @throws SQLException 
+     * 
+     * Search for a specific string and receive all results matching or containing string
+     */
     public ArrayList<Generic> Search(String dbsearcher) throws SQLException {
         PreparedStatement p = null;
         ResultSet rs = null;
         HashSet<Generic> list = new HashSet<>();
-        String query = "SELECT * FROM dbo.search('" + dbsearcher + "')";
+        String query = "SELECT * FROM dbo.search('" + dbsearcher + "')";//create query
         if (requests) {
             p = conn3.prepareStatement(query);
         } else {
@@ -274,7 +330,8 @@ public class DBreturn {
      * @param username
      * @param password
      * @return
-     * @throws SQLException Creates a user if their userID isn't already taken,
+     * @throws SQLException 
+     * Creates a user if their userID isn't already taken,
      * and their password is a valid entry
      */
     public boolean createUser(String username, String password) throws SQLException {
@@ -308,7 +365,9 @@ public class DBreturn {
     /**
      * @param username
      * @return
-     * @throws SQLException checks if the username already exists
+     * @throws SQLException 
+     * 
+     * checks if the username already exists
      */
     public boolean searchUser(String username) throws SQLException {
         PreparedStatement p = null;
@@ -331,7 +390,9 @@ public class DBreturn {
      * @param username
      * @param password
      * @return
-     * @throws SQLException checks if the user/pass combination exists prior to
+     * @throws SQLException 
+     * 
+     * checks if the user/pass combination exists prior to
      * a login attempt
      */
     public boolean retrieveUser(String username, String password) throws SQLException {
@@ -372,7 +433,9 @@ public class DBreturn {
      * @param artistGenre
      * @param artistDesc
      * @param artistLink
-     * @throws SQLException adds a song w/ the given parameters
+     * @throws SQLException 
+     * 
+     * adds a song w/ the given parameters
      */
     public void addSong(String albumName, String artistName, String songName, String songGenre, String songDesc, String songLink, String songReleaseDate, String songPrice, String songLength,
             String albumGenre, String albumDesc, String albumLink, String albumReleaseDate, String albumPrice, String artistGenre, String artistDesc, String artistLink) throws SQLException {

@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 
 public class HomePageController implements Initializable {
     
+    //FXML fields
     @FXML
     private VBox root = new VBox();
 
@@ -38,7 +39,7 @@ public class HomePageController implements Initializable {
         root.getChildren().add(0, new HeaderBar(HeaderBar.Page.HOMEPAGE));
         
 
-        
+        //Set cell factories to have pretty heckn' dope view of results
         topRatedSlider.setCellFactory(new ElementCellFactory());
         topRatedSlider.getItems().addAll(App.getDiscover());
         topRatedSlider.setEditable(false);

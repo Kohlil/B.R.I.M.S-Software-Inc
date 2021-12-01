@@ -144,6 +144,13 @@ public abstract class Generic<T> {
         this.dataType = dataType;
     }
 
+    /**
+     * 
+     * @param arg0
+     * @return 
+     * 
+     * Test for comparison
+     */
     public int equals(Generic<T> arg0) {
         if ((arg0.name.equals(this.name) && arg0.getDataType() == this.getDataType())) {
             return 0;
@@ -151,6 +158,13 @@ public abstract class Generic<T> {
         return 1;
     }
 
+    /**
+     * 
+     * @param obj
+     * @return 
+     * 
+     * Override equals for correct implementation of Hash
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof String) return false;
@@ -164,6 +178,12 @@ public abstract class Generic<T> {
         return (gen.name.equals(this.name) && gen.getDataType() == this.getDataType());
     }
 
+    /**
+     * 
+     * @return 
+     * 
+     * Override hashCode for correct implementation of hash
+     */
     @Override
     public int hashCode() {
         int hash = 5;

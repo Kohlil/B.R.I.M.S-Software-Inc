@@ -24,6 +24,7 @@ import javafx.scene.layout.StackPane;
 public class SearchResultView extends StackPane implements Initializable {
     private Generic gen;//the object this represents
 
+    //FXML fields
     @FXML
     private HBox searchResultView = new HBox();
     

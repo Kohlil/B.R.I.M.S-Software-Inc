@@ -21,10 +21,10 @@ public class App extends Application {
 
     private static Scene scene;
 
-    public static HeaderBar.Status STATUS;
-    public static Boolean isRequest = false;
-    private static HashSet<Generic> discover = new HashSet<>();
-    private static HashSet<Generic> pop = new HashSet<>();
+    public static HeaderBar.Status STATUS;//Logged in?
+    public static Boolean isRequest = false;//true when accessing requests false otherwise
+    private static HashSet<Generic> discover = new HashSet<>();//hash to prevent dup results in discover tab
+    private static HashSet<Generic> pop = new HashSet<>();//hash to prevent dup results in pop tab
 
     /**
      *

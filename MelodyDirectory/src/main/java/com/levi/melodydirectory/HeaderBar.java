@@ -29,6 +29,7 @@ public class HeaderBar extends HBox {
         LOGGED_OUT,
     }
     
+    //what type of page header bar is on
     public static enum Page {
         LOGINPAGE,
         HOMEPAGE,
@@ -36,8 +37,10 @@ public class HeaderBar extends HBox {
         DEFAULT
     }
     
+    //whether adminBox should be shown or not
     public static boolean isAdmin = false;
 
+    //FXML fields
     @FXML
     private Button loginPage = new Button();
 
@@ -90,7 +93,7 @@ public class HeaderBar extends HBox {
                 addButton.setVisible(false);
                 addButton.setDisable(true);
             }
-            if (page == Page.HOMEPAGE) {
+            if (page == Page.HOMEPAGE) {//homepage so no home button, but show FAQ
                 this.homeButton.setVisible(false);
                 this.homeButton.setDisable(true);
                 faqButton.setVisible(true);
@@ -102,17 +105,17 @@ public class HeaderBar extends HBox {
                 faqButton.setVisible(false);
                 faqButton.setDisable(true);
             }
-            if (page == Page.LOGINPAGE) {
+            if (page == Page.LOGINPAGE) {//no login button, show logout
                 loginPage.setVisible(false);
                 loginPage.setDisable(true);
                 logoutButton.setVisible(false);
                 logoutButton.setDisable(true);
             }
-            if (page == Page.ADDSONG) {
+            if (page == Page.ADDSONG) {//no add button when on add song page
                 addButton.setVisible(false);
                 addButton.setDisable(true);
             }
-            if (!isAdmin && !App.isRequest) {
+            if (!isAdmin && !App.isRequest) {//show admin box only when logged in user has admmin priveleges
                 requestsButton.setVisible(false);
                 requestsButton.setDisable(true);
             } else {
@@ -133,7 +136,7 @@ public class HeaderBar extends HBox {
      */
     @FXML
     void keyTyped(KeyEvent event) {
-
+        //NOT NEEDED
     }
 
     /**

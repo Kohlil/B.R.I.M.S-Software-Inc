@@ -8,10 +8,7 @@ package com.levi.melodydirectory;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 public class SearchController implements Initializable {
 
+    //FXML fields
     @FXML
     private VBox rootVBox = new VBox();
 
@@ -37,17 +35,19 @@ public class SearchController implements Initializable {
      */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        rootVBox.getChildren().add(0, new HeaderBar(HeaderBar.Page.DEFAULT));
-        ObservableList<Generic> resultsObs = FXCollections.observableArrayList();
+        rootVBox.getChildren().add(0, new HeaderBar(HeaderBar.Page.DEFAULT));//add header bar
+        ObservableList<Generic> resultsObs = FXCollections.observableArrayList();//results list
         
         try {
-            DBreturn db = DBreturn.getInstance();
+            DBreturn db = DBreturn.getInstance();//get db access
             if (((String)App.getData()).equals("12345test")) {
+                //IF the string above is equal to 12345test, load requests page,
+                //otherwise search db for stored string and show results
                 db.setRequests(true);
                 resultsObs.addAll(db.getAllSongs());
                 db.setRequests(false);
                 App.isRequest = true;
-            } else {
+            } else {//search string
                 App.isRequest = false;
                 resultsObs.addAll(db.Search((String)App.getData()));
             }
@@ -55,6 +55,7 @@ public class SearchController implements Initializable {
             ex.printStackTrace();
         }
         
+        //set cell factory
         resultSlider.setCellFactory(new SearchResultCellFactory());
         resultSlider.setEditable(false);
         resultSlider.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);

@@ -1,3 +1,9 @@
+/**
+ * Author: Isaiah Kohl
+ * Date: 11/29/21
+ * Purpose: Page for creating song/album/artist requests and sending them to requests db
+ */
+
 package com.levi.melodydirectory;
 
 import java.io.IOException;
@@ -222,13 +228,15 @@ public class AddSongController implements Initializable {
         this.artistLink.setText(artistLink);
     }
 
+    //Inner class for defining objects that are displayed as autofill results
     private class AutoFillView extends StackPane implements Initializable {
 
-        Generic gen;
+        Generic gen;//object being displayed
 
         @FXML
         private Label name = new Label();
 
+        //default constuctor
         public AutoFillView(Generic gen) {
             super();
             this.gen = gen;
@@ -242,6 +250,13 @@ public class AddSongController implements Initializable {
             }
         }
 
+        /**
+         * 
+         * @param arg0
+         * @param arg1 
+         * 
+         * Set label of object to name
+         */
         @Override
         public void initialize(URL arg0, ResourceBundle arg1) {
             name.setText(gen.getName());
@@ -273,6 +288,9 @@ public class AddSongController implements Initializable {
         }
     }
 
+    /**
+     * Factory for creating autofill objects and populating the list views
+     */
     private class AutoFillCellFactory implements Callback<ListView<Generic>, ListCell<Generic>> {
 
         @Override
@@ -284,7 +302,7 @@ public class AddSongController implements Initializable {
                     if (empty) {//don't populate list
                         setText(null);
                         setGraphic(null);
-                    } else if (gen != null) {//populate list with SearchResultViews
+                    } else if (gen != null) {//populate list with AutoFillViews
                         setText(null);
                         setGraphic(new AddSongController.AutoFillView(gen));
                     } else {//populate list with empty cells

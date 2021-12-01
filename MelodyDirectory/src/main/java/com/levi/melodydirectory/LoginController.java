@@ -1,15 +1,14 @@
 package com.levi.melodydirectory;
 
 /**
- * Author: Isaiah Kohl Date: 10/19/21 Purpose: Allows the Login GUI to trigger
- * events in the code.
+ * Author: Isaiah Kohl 
+ * Date: 10/19/21 
+ * Purpose: Allows the Login GUI to trigger events in the code.
  */
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +21,7 @@ import javafx.scene.layout.VBox;
 
 public class LoginController implements Initializable {
 
+    //FXML fields
     @FXML // fx:id="loginButton"
     private Button loginButton; // Value injected by FXMLLoader
 

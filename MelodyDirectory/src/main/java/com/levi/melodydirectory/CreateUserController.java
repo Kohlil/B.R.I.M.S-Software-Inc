@@ -1,3 +1,9 @@
+/**
+ * Author: Isaiah Kohl
+ * Date: 11/29/21
+ * Purpose: Page for creating a new user
+ */
+
 package com.levi.melodydirectory;
 
 import java.io.IOException;
@@ -15,6 +21,7 @@ import javafx.scene.layout.VBox;
 
 public class CreateUserController implements Initializable {
 
+    //FXML fields
     @FXML
     private VBox root = new VBox();
 
