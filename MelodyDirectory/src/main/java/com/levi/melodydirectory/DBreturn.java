@@ -294,7 +294,7 @@ public class DBreturn {
         if (valid == true) {
             String query2 = "EXEC spAddProfile @username='" + username + "', @pass = '" + password + "', @adminAccess = 0";
             PreparedStatement p2 = conn1.prepareStatement(query2);
-            p2.executeQuery();
+            p2.execute();
         }
 
         // Returns whichever case

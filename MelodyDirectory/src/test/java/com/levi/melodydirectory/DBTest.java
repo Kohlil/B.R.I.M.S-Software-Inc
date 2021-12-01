@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  */
 public class DBTest {
 
-    @Test
+    @Test//test adding a song to db
     void testDBRequestSong() throws SQLException {
         DBreturn db = DBreturn.getInstance();
         db.setRequests(true);
@@ -22,13 +22,13 @@ public class DBTest {
         db.setRequests(false);
     }
     
-    @Test
+    @Test//test deleting a song/album/artist from db
     void testDBDelete() throws SQLException {
         DBreturn db = DBreturn.getInstance();
         db.setRequests(true);
-        //db.delete("Sunflower");
-        //db.delete("Post Malone");
-        //db.delete("Spiderman Into the Spiderverse");
+        db.delete("Sunflower");
+        db.delete("Post Malone");
+        db.delete("Spiderman Into the Spiderverse");
         db.setRequests(false);
     }
 }

@@ -5,8 +5,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,12 +24,13 @@ import javafx.util.Callback;
 
 public class AddSongController implements Initializable {
 
-    private DBreturn db = DBreturn.getInstance();
-    private ObservableList<Generic> albumObs = FXCollections.observableArrayList();
-    private ObservableList<Generic> artistObs = FXCollections.observableArrayList();
-    private HashSet<Generic> albumList = new HashSet();
-    private HashSet<Generic> artistList = new HashSet();
+    private DBreturn db = DBreturn.getInstance();//db access
+    private ObservableList<Generic> albumObs = FXCollections.observableArrayList();//list for albums autifill
+    private ObservableList<Generic> artistObs = FXCollections.observableArrayList();//list for artist autofill
+    private HashSet<Generic> albumList = new HashSet();//hash for album autofill to prevent dup results
+    private HashSet<Generic> artistList = new HashSet();//hash for artist autofill to prevent dup results
 
+    //FXML fields
     @FXML
     private VBox rootVBox = new VBox();
 
@@ -86,51 +85,74 @@ public class AddSongController implements Initializable {
     @FXML
     private TextField artistLink = new TextField();
 
+    /**
+     * 
+     * @param arg0
+     * @param arg1 
+     * 
+     * Adds header bar to top of page without the add songs button
+     */
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         rootVBox.getChildren().add(0, new HeaderBar(HeaderBar.Page.ADDSONG));
     }
 
+    /**
+     * 
+     * @param event 
+     * 
+     * Updates album autofill when a key is typed, should be changed to key pressed
+     * so that it also updates when backspace is pressed
+     */
     @FXML
     void albumKeyTyped(KeyEvent event) {
         albumObs.clear();
         albumList.clear();
-        albumAutofill.getItems().clear();
+        albumAutofill.getItems().clear();//clear current results
         try {
-            albumList.addAll(db.Search(albumName.getText()));
+            albumList.addAll(db.Search(albumName.getText()));//get updated results
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
         for (Generic gen : albumList) {
-            if ((gen.getDataType() == Generic.DataTypes.ALBUM)) {
+            if ((gen.getDataType() == Generic.DataTypes.ALBUM)) {//only show albums
                 albumObs.add((Album) gen);
             }
         }
 
+        //set cell factory for listview
         albumAutofill.setCellFactory(new AutoFillCellFactory());
         albumAutofill.setEditable(false);
         albumAutofill.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         albumAutofill.getItems().addAll(albumObs);
     }
 
+    /**
+     * 
+     * @param event 
+     * 
+     * Updates artist autofill when a key is typed, should be changed to key pressed
+     * so that it also updates when backspace is pressed
+     */
     @FXML
     void artistKeyTyped(KeyEvent event) {
         artistObs.clear();
         artistList.clear();
-        artistAutofill.getItems().clear();
+        artistAutofill.getItems().clear();//clear old results
         try {
-            artistList.addAll(db.Search(artistName.getText()));
+            artistList.addAll(db.Search(artistName.getText()));//get new results
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
 
         for (Generic gen : artistList) {
-            if ((gen.getDataType() == Generic.DataTypes.ARTIST)) {
+            if ((gen.getDataType() == Generic.DataTypes.ARTIST)) {//only show artists
                 artistObs.add((Artist) gen);
             }
         }
 
+        //set cell factory for list view
         artistAutofill.setCellFactory(new AutoFillCellFactory());
         artistAutofill.setEditable(false);
         artistAutofill.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -147,8 +169,8 @@ public class AddSongController implements Initializable {
     @FXML
     void sendRequestPressed(ActionEvent event) throws IOException {
         try {
-            db.setRequests(true);
-            db.addSong(albumName.getText(), artistName.getText(),
+            db.setRequests(true);//set db to requests mode
+            db.addSong(albumName.getText(), artistName.getText(),//create request
                     songName.getText(), songGenre.getText(),
                     songDescription.getText(), songLink.getText(),
                     songReleased.getText(), songPrice.getText(),
@@ -162,9 +184,9 @@ public class AddSongController implements Initializable {
             System.exit(5);
         }
         finally {
-            db.setRequests(false);
+            db.setRequests(false);//set db back to normal approved data
         }
-        App.setRoot("Homepage");
+        App.setRoot("Homepage");//return home
     }
 
     //Setters to allow AutoFillView to set fields
