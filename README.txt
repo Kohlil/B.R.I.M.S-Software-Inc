@@ -11,6 +11,7 @@ Operating Instructions
 * Operating through the Melody Directory should be seamless as it provides user functionality, but if any doubts kindly refer to our directory's FAQ page. 
 
 File Manifest (a list of files in the directory or archive)
+  - AddSongController.java
   - Album.java
   - Artist.java
   - App.java
